@@ -1,0 +1,14 @@
+/* Motion styles for state changes only - not decorative */
+/* Use opacity + transform only, 150-250ms duration */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
