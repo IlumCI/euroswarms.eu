@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Euroswarms Research - Independent Research in Agentic and Causal AI Systems" />
+    <!-- Google Fonts for European academic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <title>Euroswarms Research</title>
+    <script>
+      // GitHub Pages SPA fallback - redirect to index.html
+      var path = window.location.pathname;
+      if (path.endsWith('/')) {
+        path = path.slice(0, -1);
+      }
+      var redirect = '/euroswarms.eu/index.html' + (path !== '/euroswarms.eu' ? '#' + path : '');
+      window.location.replace(redirect);
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/euroswarms.eu/src/main.js"></script>
+  </body>
+</html>
+
