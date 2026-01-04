@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 bg-bg text-fg font-sans leading-relaxed antialiased;
+    font-size: 16px;
+    background-color: #e8f0f8;
+    color: #1a1a1a;
+  }
+
+  a {
+    @apply text-accent no-underline border-b border-transparent transition-colors;
+  }
+
+  a:hover {
+    @apply border-accent;
+    color: #0056b3;
+  }
+
+  /* Serif headings for academic/institutional feel */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal tracking-tight text-fg;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl mb-6;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl mb-5 mt-8;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply text-2xl mb-4 mt-6;
+    font-weight: 500;
+  }
+
+  p {
+    @apply max-w-[75ch] text-muted leading-relaxed;
+    font-size: 1.125rem;
+  }
+
+  ul {
+    @apply list-none p-0;
+  }
+
+  ul li {
+    @apply mb-3 text-muted;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  ul li::before {
+    content: "▸";
+    @apply text-accent;
+    position: absolute;
+    left: 0;
+    font-size: 0.875rem;
+  }
+
+  /* Section spacing */
+  section {
+    @apply mb-16 md:mb-24;
+  }
+}
+
+@layer components {
+  .meta {
+    @apply font-mono text-sm text-muted uppercase tracking-wider;
+  }
+
+  .status {
+    @apply text-xs font-mono text-accent uppercase tracking-wider font-semibold;
+    letter-spacing: 0.1em;
+  }
+
+  /* Institutional card style with European blue */
+  .card {
+    @apply border transition-all duration-200;
+    background-color: #1e3a5f;
+    border-color: #003d82;
+    color: #f5f7fa;
+  }
+
+  .card:hover {
+    @apply shadow-sm;
+    transform: translateY(-2px);
+    background-color: #2a4a6f;
+    border-color: #0056b3;
+  }
+
+  .card h3 {
+    color: #f5f7fa;
+  }
+
+  .card p {
+    color: #d4e3f0;
+  }
+
+  /* Institutional divider */
+  .divider {
+    @apply border-t my-12;
+    border-color: #9bb8d0;
+  }
+}
