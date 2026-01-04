@@ -1,11 +1,11 @@
 # Euroswarms Research Website
 
-Institutional-style static website for Euroswarms R&D Division, built with **Vue 3**, **HTMX**, and **Tailwind CSS**.
+Institutional-style static website for Euroswarms R&D Division, built with **React**, **HTML**, **CSS**, and **Tailwind CSS**.
 
 ## Tech Stack
 
-- **Vue 3** - Progressive JavaScript framework with Composition API
-- **Vue Router** - Client-side routing
+- **React 18** - JavaScript library for building user interfaces
+- **React Router** - Declarative routing for React
 - **HTMX** - Dynamic HTML interactions
 - **Tailwind CSS** - Utility-first CSS framework
 - **Vite** - Next-generation frontend build tool
@@ -22,19 +22,19 @@ website/
 │           └── symbolOnly.png    # Symbol-only logo
 ├── src/
 │   ├── components/
-│   │   ├── BaseLayout.vue        # Base layout wrapper
-│   │   └── Navigation.vue      # Navigation component
+│   │   ├── BaseLayout.jsx        # Base layout wrapper
+│   │   └── Navigation.jsx        # Navigation component
 │   ├── pages/
-│   │   ├── Home.vue              # Homepage
-│   │   ├── Projects.vue           # Projects index
+│   │   ├── Home.jsx              # Homepage
+│   │   ├── Projects.jsx          # Projects index
 │   │   ├── projects/
-│   │   │   ├── Crca.vue          # CR-CA project page
-│   │   │   └── Lucre.vue         # Project LUCRE page
-│   │   ├── Publications.vue      # Publications listing
-│   │   ├── Docs.vue              # Documentation index
-│   │   └── Contact.vue           # Contact page
-│   ├── App.vue                   # Main Vue app
-│   ├── main.js                   # Application entry point
+│   │   │   ├── Crca.jsx          # CR-CA project page
+│   │   │   └── Lucre.jsx         # Project LUCRE page
+│   │   ├── Publications.jsx       # Publications listing
+│   │   ├── Docs.jsx              # Documentation index
+│   │   └── Contact.jsx            # Contact page
+│   ├── App.jsx                   # Main React app
+│   ├── main.jsx                  # Application entry point
 │   └── style.css                 # Tailwind CSS styles
 ├── index.html                    # HTML entry point
 ├── vite.config.js                # Vite configuration
@@ -82,10 +82,10 @@ pnpm run preview
 
 ## Features
 
-- **Vue 3 Composition API**: Modern, reactive component architecture
+- **React 18**: Modern React with hooks and functional components
 - **HTMX Integration**: Ready for dynamic content swapping
 - **Tailwind CSS**: Utility-first styling with custom European color palette
-- **Vue Router**: Client-side routing for smooth navigation
+- **React Router**: Client-side routing for smooth navigation
 - **Responsive Design**: Mobile-first approach with breakpoints
 
 ## Deployment
@@ -100,6 +100,6 @@ The site builds to static HTML/CSS/JS. Deploy to:
 ## Notes
 
 - Assets in `public/` are served at the root (`/assets/...`)
-- Navigation uses Vue Router for client-side routing
+- Navigation uses React Router for client-side routing
 - All pages use the `BaseLayout` for consistent structure
 - European blue theme throughout with yellow accents
