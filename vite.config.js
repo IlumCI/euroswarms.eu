@@ -12,11 +12,11 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
+  base: '/euroswarms.eu/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
   },
-  // base: '/', // Uncomment and set if deploying to a subdirectory
   server: {
     port: 4321,
   },
