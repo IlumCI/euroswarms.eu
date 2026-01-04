@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Euroswarms Research</title>
+    <title>Euroswarms R&D Division</title>
     <script>
-      // GitHub Pages SPA fallback for Vue Router
-      var path = window.location.pathname;
-      var base = '/euroswarms.eu/';
-      if (path.startsWith(base)) {
-        path = path.slice(base.length - 1);
-      }
-      if (path === '' || path === '/') {
-        path = '/';
-      }
-      window.location.replace(base + 'index.html' + (path !== '/' ? '#' + path : ''));
+      // GitHub Pages SPA fallback for React Router (BrowserRouter)
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 1;
+      var base = '/euroswarms.eu';
+      
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        base + '/' +
+        (pathSegmentsToKeep ? l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/').replace(/\/$/, '') : '') +
+        '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/\/$/, '') +
+        (l.search ? '&' + l.search.slice(1) : '') +
+        l.hash
+      );
     </script>
   </head>
   <body>
