@@ -36,9 +36,9 @@ function Lucre() {
       <section className="mb-16">
         <h2 className="font-serif">Artifacts</h2>
         <ul className="space-y-3">
-          <li><a href="#" className="text-blue-300 hover:text-white">Technical Documentation</a></li>
-          <li><a href="#" className="text-blue-300 hover:text-white">arXiv Preprint</a></li>
-          <li><a href="#" className="text-blue-300 hover:text-white">Source Repository</a></li>
+          <li><a href="#" className="text-yellow-300 hover:text-white">Technical Documentation</a></li>
+          <li><a href="#" className="text-yellow-300 hover:text-white">arXiv Preprint</a></li>
+          <li><a href="#" className="text-yellow-300 hover:text-white">Source Repository</a></li>
         </ul>
       </section>
     </>

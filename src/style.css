@@ -10,7 +10,7 @@
   body {
     @apply m-0 bg-bg text-fg font-sans leading-relaxed antialiased;
     font-size: 16px;
-    background-color: #e8f0f8;
+    background-color: #f5f7fa;
     color: #1a1a1a;
   }
 
@@ -29,20 +29,23 @@
   }
 
   h1 {
-    @apply text-5xl md:text-6xl mb-6;
+    @apply text-5xl md:text-6xl lg:text-7xl mb-6;
     font-weight: 400;
     letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl mb-5 mt-8;
+    @apply text-3xl md:text-4xl lg:text-5xl mb-5 mt-6;
     font-weight: 400;
     letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   h3 {
-    @apply text-2xl mb-4 mt-6;
+    @apply text-2xl md:text-3xl mb-4 mt-6;
     font-weight: 500;
+    line-height: 1.3;
   }
 
   p {
@@ -70,7 +73,7 @@
 
   /* Section spacing */
   section {
-    @apply mb-16 md:mb-24;
+    @apply mb-12 md:mb-16;
   }
 }
 
@@ -84,32 +87,138 @@
     letter-spacing: 0.1em;
   }
 
+  /* Official badge for flagship projects */
+  .badge-official {
+    @apply inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider;
+    background-color: #f4c430;
+    color: #1a1a1a;
+    border-radius: 2px;
+  }
+
   /* Institutional card style with European blue */
   .card {
-    @apply border transition-all duration-200;
-    background-color: #1e3a5f;
-    border-color: #003d82;
-    color: #f5f7fa;
+    @apply border transition-all duration-200 rounded-sm;
+    background-color: #003399;
+    border-color: #002266;
+    color: #ffffff;
   }
 
   .card:hover {
-    @apply shadow-sm;
+    @apply shadow-card;
     transform: translateY(-2px);
-    background-color: #2a4a6f;
-    border-color: #0056b3;
+    background-color: #0044aa;
+    border-color: #003399;
   }
 
   .card h3 {
-    color: #f5f7fa;
+    color: #ffffff;
   }
 
   .card p {
-    color: #d4e3f0;
+    color: #e8f0f8;
+  }
+
+  .card .text-muted,
+  .card p.text-muted {
+    color: #d4e3f0 !important;
+  }
+
+  .card ul li {
+    color: #e8f0f8;
+  }
+
+  .card a {
+    color: #f4c430;
+    border-color: transparent;
+  }
+
+  .card a:hover {
+    color: #ffffff;
+    border-color: #f4c430;
+  }
+
+  /* Light card variant for secondary content */
+  .card-light {
+    @apply border transition-all duration-200 rounded-sm;
+    background-color: #ffffff;
+    border-color: #b8d4e8;
+    color: #1a1a1a;
+  }
+
+  .card-light:hover {
+    @apply shadow-institutional;
+    transform: translateY(-2px);
+    border-color: #003399;
+  }
+
+  /* Hero section */
+  .hero {
+    @apply py-12 md:py-16 lg:py-20;
+    background: linear-gradient(135deg, #003399 0%, #0044aa 100%);
+    color: #ffffff;
+  }
+
+  .hero h1, .hero h2, .hero p {
+    color: #ffffff;
+  }
+
+  .hero a {
+    color: #f4c430;
+    border-color: transparent;
+  }
+
+  .hero a:hover {
+    color: #ffffff;
+    border-color: #f4c430;
   }
 
   /* Institutional divider */
   .divider {
-    @apply border-t my-12;
-    border-color: #9bb8d0;
+    @apply border-t my-8 md:my-12;
+    border-color: #b8d4e8;
+  }
+
+  /* Feature card for capabilities */
+  .feature-card {
+    @apply p-6 md:p-8 border rounded-sm transition-all duration-200;
+    background-color: #ffffff;
+    border-color: #d1e0ed;
+  }
+
+  .feature-card:hover {
+    @apply shadow-institutional;
+    border-color: #003399;
+    transform: translateY(-2px);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply inline-block px-6 py-3 font-semibold text-white uppercase tracking-wider transition-all duration-200;
+    background-color: #003399;
+    border: 2px solid #003399;
+  }
+
+  .btn-primary:hover {
+    background-color: #0044aa;
+    border-color: #0044aa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 51, 153, 0.3);
+  }
+
+  .btn-secondary {
+    @apply inline-block px-6 py-3 font-semibold text-accent uppercase tracking-wider transition-all duration-200;
+    background-color: transparent;
+    border: 2px solid #003399;
+  }
+
+  .btn-secondary:hover {
+    background-color: #003399;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  /* Section background */
+  .section-bg {
+    background-color: #f0f5fa;
   }
 }
