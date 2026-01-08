@@ -34,6 +34,9 @@ jobs:
       - name: Build
         run: pnpm run build
       
+      - name: Copy evaluation_data to dist
+        run: cp -r public/evaluation_data dist/ || mkdir -p dist/evaluation_data && cp -r public/evaluation_data/* dist/evaluation_data/ || echo "No evaluation_data to copy"
+      
       - name: Copy index.html to 404.html for SPA routing
         run: cp dist/index.html dist/404.html
       
