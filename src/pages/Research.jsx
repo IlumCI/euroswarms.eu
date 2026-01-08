@@ -180,12 +180,12 @@ function Research() {
           </li>
           <li className="leading-relaxed">
             <MathRenderer>$F$</MathRenderer> is a set of functions <MathRenderer>{'$F = \\{f_i\\}$'}</MathRenderer>
-            such that each <MathRenderer>$v_i \in V$</MathRenderer> is determined by
+            such that each <MathRenderer>{'$v_i \\in V$'}</MathRenderer> is determined by
             <MathRenderer display={true}>{'$$v_i = f_i(pa_i, u_i)$$'}</MathRenderer>
             where <MathRenderer>{'$pa_i \\subseteq V \\setminus \\{v_i\\}$'}</MathRenderer> are the
-            parents of <MathRenderer>$v_i$</MathRenderer> in the causal graph, and
-            <MathRenderer>$u_i \in U$</MathRenderer> is the exogenous variable for
-            <MathRenderer>$v_i$</MathRenderer>.
+            parents of <MathRenderer>{'$v_i$'}</MathRenderer> in the causal graph, and
+            <MathRenderer>{'$u_i \\in U$'}</MathRenderer> is the exogenous variable for
+            <MathRenderer>{'$v_i$'}</MathRenderer>.
           </li>
           <li className="leading-relaxed">
             <MathRenderer>$P(U)$</MathRenderer> is a probability distribution over
@@ -196,8 +196,8 @@ function Research() {
         <p className="leading-relaxed max-w-4xl mb-6">
           The causal graph <MathRenderer>$G = (V, E)$</MathRenderer> is a directed acyclic
           graph (DAG) where nodes represent variables and edges represent direct causal
-          relationships. An edge <MathRenderer>$v_i \to v_j$</MathRenderer> indicates that
-          <MathRenderer>$v_i$</MathRenderer> is a direct cause of <MathRenderer>$v_j$</MathRenderer>.
+          relationships. An edge <MathRenderer>{'$v_i \\to v_j$'}</MathRenderer> indicates that
+          <MathRenderer>{'$v_i$'}</MathRenderer> is a direct cause of <MathRenderer>{'$v_j$'}</MathRenderer>.
         </p>
 
         <h3 className="font-serif text-2xl mb-4">2.2 The Three-Level Causal Hierarchy</h3>
@@ -229,7 +229,7 @@ function Research() {
         <p className="leading-relaxed max-w-4xl mb-6">
           A counterfactual query asks: "What would have been the value of <MathRenderer>$Y$</MathRenderer>
           had <MathRenderer>$X$</MathRenderer> been <MathRenderer>$x$</MathRenderer>, given that
-          we observed <MathRenderer>$X = x'$</MathRenderer> and <MathRenderer>$Y = y'$</MathRenderer>?"
+          we observed <MathRenderer>{'$X = x\'$'}</MathRenderer> and <MathRenderer>{'$Y = y\'$'}</MathRenderer>?"
           This is denoted <MathRenderer>{'$P(Y_x = y|X = x\', Y = y\')$'}</MathRenderer>.
         </p>
         <p className="leading-relaxed max-w-4xl mb-6">
@@ -606,7 +606,7 @@ Return ONLY valid JSON, no other text."""`}
           {'$$z_j = \\sum_{i \\in PA_j} \\beta_{ij} z_i + \\epsilon_j$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
-          where <MathRenderer>$PA_j$</MathRenderer> are the parents of variable <MathRenderer>$j$</MathRenderer>,
+          where <MathRenderer>{'$PA_j$'}</MathRenderer> are the parents of variable <MathRenderer>$j$</MathRenderer>,
           <MathRenderer>{'$\\beta_{ij}$'}</MathRenderer> is the edge strength, and <MathRenderer>{'$\\epsilon_j$'}</MathRenderer>
           is the exogenous noise (set to 0 for deterministic prediction).
         </p>
@@ -625,7 +625,7 @@ Return ONLY valid JSON, no other text."""`}
           {'$$z_i = \\frac{x_i - \\mu_i}{\\sigma_i}$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
-          where <MathRenderer>$\mu_i$</MathRenderer> and <MathRenderer>$\sigma_i$</MathRenderer>
+          where <MathRenderer>{'$\\mu_i$'}</MathRenderer> and <MathRenderer>{'$\\sigma_i$'}</MathRenderer>
           are stored in <code>standardization_stats</code>. After prediction, results are
           de-standardized:
         </p>
@@ -741,8 +741,8 @@ Return ONLY valid JSON, no other text."""`}
         </p>
         <ol className="space-y-3 max-w-4xl mb-6 list-decimal list-inside">
           <li className="leading-relaxed">
-            Sampling interventions: <MathRenderer>$I \sim p(I|G, x_f)$</MathRenderer> where
-            <MathRenderer>$x_f$</MathRenderer> is the factual state
+            Sampling interventions: <MathRenderer>{'$I \\sim p(I|G, x_f)$'}</MathRenderer> where
+            <MathRenderer>{'$x_f$'}</MathRenderer> is the factual state
           </li>
           <li className="leading-relaxed">
             Sampling graph variations: <MathRenderer>{'$G\' \\sim p(G\'|G, \\text{uncertainty})$'}</MathRenderer>
@@ -762,8 +762,8 @@ Return ONLY valid JSON, no other text."""`}
           {'$$Q = \\alpha \\cdot \\text{consistency} + \\beta \\cdot \\text{confidence} + \\gamma \\cdot (1 - \\text{uncertainty})$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
-          where <MathRenderer>$\alpha = 0.4$</MathRenderer>, <MathRenderer>$\beta = 0.6$</MathRenderer>,
-          and <MathRenderer>$\gamma = 0.2$</MathRenderer> by default.
+          where <MathRenderer>{'$\\alpha = 0.4$'}</MathRenderer>, <MathRenderer>{'$\\beta = 0.6$'}</MathRenderer>,
+          and <MathRenderer>{'$\\gamma = 0.2$'}</MathRenderer> by default.
         </p>
 
         <h3 className="font-serif text-2xl mb-4">7.4 Formal Quality Score Derivation</h3>
@@ -781,7 +781,7 @@ Return ONLY valid JSON, no other text."""`}
           {'$$\\text{consistency} = 1 - \\frac{\\text{std}(\\{y_i\\})}{\\text{mean}(|\\{y_i\\}|) + \\epsilon}$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-4">
-          where <MathRenderer>$\epsilon$</MathRenderer> prevents division by zero. Higher consistency
+          where <MathRenderer>{'$\\epsilon$'}</MathRenderer> prevents division by zero. Higher consistency
           indicates stable predictions across graph uncertainty.
         </p>
 
@@ -806,22 +806,22 @@ Return ONLY valid JSON, no other text."""`}
 
         <h4 className="font-serif text-xl mb-4">Weight Selection and Sensitivity Analysis</h4>
         <p className="leading-relaxed max-w-4xl mb-6">
-          The default weights (<MathRenderer>$\alpha = 0.4$</MathRenderer>, <MathRenderer>$\beta = 0.6$</MathRenderer>,
-          <MathRenderer>$\gamma = 0.2$</MathRenderer>) were selected through sensitivity analysis across
+          The default weights (<MathRenderer>{'$\\alpha = 0.4$'}</MathRenderer>, <MathRenderer>{'$\\beta = 0.6$'}</MathRenderer>,
+          <MathRenderer>{'$\\gamma = 0.2$'}</MathRenderer>) were selected through sensitivity analysis across
           20 diverse scenarios. This configuration balances emphasis on consistency and confidence,
           with moderate uncertainty penalty. Sensitivity analysis shows that:
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            Increasing <MathRenderer>$\alpha$</MathRenderer> (consistency weight) improves stability
+            Increasing <MathRenderer>{'$\\alpha$'}</MathRenderer> (consistency weight) improves stability
             but may penalize valid high-variance predictions
           </li>
           <li className="leading-relaxed">
-            Increasing <MathRenderer>$\beta$</MathRenderer> (confidence weight) emphasizes graph
+            Increasing <MathRenderer>{'$\\beta$'}</MathRenderer> (confidence weight) emphasizes graph
             reliability but may miss high-quality predictions from low-confidence edges
           </li>
           <li className="leading-relaxed">
-            Increasing <MathRenderer>$\gamma$</MathRenderer> (uncertainty penalty) reduces variance
+            Increasing <MathRenderer>{'$\\gamma$'}</MathRenderer> (uncertainty penalty) reduces variance
             but may filter informative high-uncertainty scenarios
           </li>
         </ul>
