@@ -3,26 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Euroswarms R&D Division - Independent Research in Agentic and Causal AI Systems. Flagship project: CR-CA Framework for causal reasoning and counterfactual analysis." />
+    <!-- Google Fonts for European academic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <title>Euroswarms R&D Division</title>
     <script>
-      // GitHub Pages SPA fallback for React Router (BrowserRouter)
-      // Simple redirect to index.html - React Router will handle the routing
+      // GitHub Pages SPA fallback: Load the React app from index.html
+      // This allows React Router to handle the routing based on the current URL
       var base = '/euroswarms.eu';
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      
-      // Redirect to index.html, preserving the path for React Router
-      if (path.startsWith(base)) {
-        // Already on the base path, redirect to index.html
-        window.location.replace(base + '/index.html' + search + hash);
-      } else {
-        // Not on base path, redirect to base/index.html
-        window.location.replace(base + '/index.html');
-      }
+      fetch(base + '/index.html')
+        .then(function(response) { return response.text(); })
+        .then(function(html) {
+          // Parse the HTML to extract script and link tags
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(html, 'text/html');
+          var scripts = doc.querySelectorAll('script[type="module"]');
+          var links = doc.querySelectorAll('link[rel="stylesheet"]');
+          
+          // Add the stylesheets
+          links.forEach(function(link) {
+            var newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.crossOrigin = link.crossOrigin || '';
+            newLink.href = link.href;
+            document.head.appendChild(newLink);
+          });
+          
+          // Add the script (this will load the React app)
+          scripts.forEach(function(script) {
+            var newScript = document.createElement('script');
+            newScript.type = 'module';
+            newScript.crossOrigin = script.crossOrigin || '';
+            newScript.src = script.src;
+            document.body.appendChild(newScript);
+          });
+        })
+        .catch(function() {
+          // Fallback: redirect to index.html
+          window.location.replace(base + '/index.html');
+        });
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <div id="app"></div>
   </body>
 </html>
