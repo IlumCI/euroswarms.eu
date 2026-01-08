@@ -1,23 +1,24 @@
-function CausalGraph({ nodes, edges, title = 'Causal Graph' }) {
+function CausalGraph({ nodes = [], edges = [], title = 'Causal Graph' }) {
   // Simple SVG-based causal graph visualization
-  const width = 600;
-  const height = 400;
-  const nodeRadius = 20;
-  const nodePositions = {};
+  try {
+    const width = 600;
+    const height = 400;
+    const nodeRadius = 20;
+    const nodePositions = {};
 
-  // Simple circular layout
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const radius = Math.min(width, height) / 3;
-  const angleStep = (2 * Math.PI) / nodes.length;
+    // Simple circular layout
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = Math.min(width, height) / 3;
+    const angleStep = nodes.length > 0 ? (2 * Math.PI) / nodes.length : 0;
 
-  nodes.forEach((node, index) => {
-    const angle = index * angleStep;
-    nodePositions[node] = {
-      x: centerX + radius * Math.cos(angle),
-      y: centerY + radius * Math.sin(angle),
-    };
-  });
+    nodes.forEach((node, index) => {
+      const angle = index * angleStep;
+      nodePositions[node] = {
+        x: centerX + radius * Math.cos(angle),
+        y: centerY + radius * Math.sin(angle),
+      };
+    });
 
   return (
     <div className="my-8">
@@ -103,7 +104,18 @@ function CausalGraph({ nodes, edges, title = 'Causal Graph' }) {
         </svg>
       </div>
     </div>
-  );
+    );
+  } catch (error) {
+    console.error('CausalGraph error:', error);
+    return (
+      <div className="my-8">
+        {title && <h4 className="font-serif text-lg mb-4">{title}</h4>}
+        <div className="bg-bg border rounded-lg p-4">
+          <p className="text-muted">Error rendering causal graph</p>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default CausalGraph;

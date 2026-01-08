@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import BaseLayout from './components/BaseLayout';
+import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -36,7 +37,7 @@ function App() {
       <Route path="/projects/crca" element={<BaseLayout><ProjectCrca /></BaseLayout>} />
       <Route path="/projects/lucre" element={<BaseLayout><ProjectLucre /></BaseLayout>} />
       <Route path="/publications" element={<BaseLayout><Publications /></BaseLayout>} />
-      <Route path="/research" element={<BaseLayout><Research /></BaseLayout>} />
+      <Route path="/research" element={<BaseLayout><ErrorBoundary><Research /></ErrorBoundary></BaseLayout>} />
       <Route path="/docs" element={<BaseLayout><Docs /></BaseLayout>} />
       <Route path="/contact" element={<BaseLayout><Contact /></BaseLayout>} />
     </Routes>

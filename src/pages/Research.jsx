@@ -4,7 +4,7 @@ import CausalGraph from '../components/CausalGraph';
 import AlgorithmFlowchart from '../components/AlgorithmFlowchart';
 import CodeBlock from '../components/CodeBlock';
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL || '/euroswarms.eu/';
 
 function Research() {
   return (
@@ -12,7 +12,7 @@ function Research() {
       {/* Table of Contents */}
       <section className="mb-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 p-4 rounded-lg" style={{ backgroundColor: '#003399' }}>
             <img
               src={`${BASE_URL}assets/images/full-nobg.png`}
               alt="Euroswarms R&D Division"
@@ -27,25 +27,6 @@ function Research() {
               research organization advancing the field of causal artificial intelligence through
               open-source frameworks and rigorous scientific methodology.
             </p>
-          </div>
-        </div>
-        
-        <div className="flex justify-center items-center gap-8 my-8 py-6 border-t border-b" style={{ borderColor: '#b8d4e8' }}>
-          <div className="text-center">
-            <img
-              src={`${BASE_URL}assets/images/symbolOnly.png`}
-              alt="Euroswarms Symbol"
-              className="h-16 w-16 mx-auto mb-2"
-            />
-            <p className="text-xs text-muted">Euroswarms Symbol</p>
-          </div>
-          <div className="text-center">
-            <img
-              src={`${BASE_URL}assets/images/full-nobg.png`}
-              alt="Euroswarms Logo"
-              className="h-16 w-auto mx-auto mb-2"
-            />
-            <p className="text-xs text-muted">Euroswarms R&D Division</p>
           </div>
         </div>
         
@@ -218,7 +199,7 @@ function Research() {
             effects of actions
           </li>
           <li className="leading-relaxed">
-            <strong>Counterfactual (Imagining):</strong> <MathRenderer>$P(Y_{x}|X=x', Y=y')$</MathRenderer>—reasoning
+            <strong>Counterfactual (Imagining):</strong> <MathRenderer>{'$P(Y_{x}|X=x\', Y=y\')$'}</MathRenderer>—reasoning
             about what would have happened under different circumstances
           </li>
         </ol>
@@ -234,7 +215,7 @@ function Research() {
           A counterfactual query asks: "What would have been the value of <MathRenderer>$Y$</MathRenderer>
           had <MathRenderer>$X$</MathRenderer> been <MathRenderer>$x$</MathRenderer>, given that
           we observed <MathRenderer>$X = x'$</MathRenderer> and <MathRenderer>$Y = y'$</MathRenderer>?"
-          This is denoted <MathRenderer>$P(Y_x = y|X = x', Y = y')$</MathRenderer>.
+          This is denoted <MathRenderer>{'$P(Y_x = y|X = x\', Y = y\')$'}</MathRenderer>.
         </p>
         <p className="leading-relaxed max-w-4xl mb-6">
           Pearl's three-step process for computing counterfactuals (Pearl, 2009, Chapter 7):
@@ -360,7 +341,7 @@ function Research() {
 
         <p className="leading-relaxed max-w-4xl mb-6">
           <strong>Mathematical Formulation:</strong> Given a task <MathRenderer>$T$</MathRenderer>
-          (natural language string), the extraction function <MathRenderer>$f_{LLM}$</MathRenderer>
+          (natural language string), the extraction function <MathRenderer>{'$f_{LLM}$'}</MathRenderer>
           maps it to a structured representation:
         </p>
         <MathRenderer display={true}>
@@ -440,16 +421,16 @@ Return ONLY valid JSON, no other text."""`}
         </ul>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          Each edge <MathRenderer>$e_{ij}$</MathRenderer> from variable <MathRenderer>$i$</MathRenderer>
+          Each edge <MathRenderer>{'$e_{ij}$'}</MathRenderer> from variable <MathRenderer>$i$</MathRenderer>
           to variable <MathRenderer>$j$</MathRenderer> is characterized by:
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            <strong>Strength:</strong> <MathRenderer>$\beta_{ij} \in \mathbb{R}$</MathRenderer>,
+            <strong>Strength:</strong> <MathRenderer>{'$\\beta_{ij} \\in \\mathbb{R}$'}</MathRenderer>,
             the causal effect coefficient
           </li>
           <li className="leading-relaxed">
-            <strong>Confidence:</strong> <MathRenderer>$c_{ij} \in [0,1]$</MathRenderer>,
+            <strong>Confidence:</strong> <MathRenderer>{'$c_{ij} \\in [0,1]$'}</MathRenderer>,
             the confidence in the edge's existence
           </li>
           <li className="leading-relaxed">
@@ -546,7 +527,7 @@ Return ONLY valid JSON, no other text."""`}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
           where <MathRenderer>$PA_j$</MathRenderer> are the parents of variable <MathRenderer>$j$</MathRenderer>,
-          <MathRenderer>$\beta_{ij}$</MathRenderer> is the edge strength, and <MathRenderer>$\epsilon_j$</MathRenderer>
+          <MathRenderer>{'$\\beta_{ij}$'}</MathRenderer> is the edge strength, and <MathRenderer>{'$\\epsilon_j$'}</MathRenderer>
           is the exogenous noise (set to 0 for deterministic prediction).
         </p>
         <p className="leading-relaxed max-w-4xl mb-6">
@@ -582,7 +563,7 @@ Return ONLY valid JSON, no other text."""`}
           </li>
           <li className="leading-relaxed">
             Forward pass: <MathRenderer>$O(|V|)$</MathRenderer> nodes, each requiring
-            <MathRenderer>$O(\text{deg}^+(v))$</MathRenderer> operations, totaling
+            <MathRenderer>{'$O(\\text{deg}^+(v))$'}</MathRenderer> operations, totaling
             <MathRenderer>$O(|E|)$</MathRenderer>
           </li>
           <li className="leading-relaxed">
@@ -633,7 +614,7 @@ Return ONLY valid JSON, no other text."""`}
             <MathRenderer>$x_f$</MathRenderer> is the factual state
           </li>
           <li className="leading-relaxed">
-            Sampling graph variations: <MathRenderer>$G' \sim p(G'|G, \text{uncertainty})$</MathRenderer>
+            Sampling graph variations: <MathRenderer>{'$G\' \\sim p(G\'|G, \\text{uncertainty})$'}</MathRenderer>
             to account for edge strength uncertainty
           </li>
           <li className="leading-relaxed">

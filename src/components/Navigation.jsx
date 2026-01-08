@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL || '/euroswarms.eu/';
 
 function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
