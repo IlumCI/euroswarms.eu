@@ -1,0 +1,807 @@
+{
+  "default_weights": {
+    "alpha": 0.4,
+    "beta": 0.6,
+    "gamma": 0.2
+  },
+  "sensitivity_analysis": [
+    {
+      "weights": {
+        "alpha": 0.3,
+        "beta": 0.5,
+        "gamma": 0.2
+      },
+      "average_quality_score": 0.762,
+      "std_quality_score": 0.058,
+      "scenarios": [
+        {
+          "scenario_id": 1,
+          "consistency": 0.783,
+          "confidence": 0.785,
+          "uncertainty": 0.316,
+          "quality_score": 0.764
+        },
+        {
+          "scenario_id": 2,
+          "consistency": 0.787,
+          "confidence": 0.857,
+          "uncertainty": 0.198,
+          "quality_score": 0.825
+        },
+        {
+          "scenario_id": 3,
+          "consistency": 0.949,
+          "confidence": 0.729,
+          "uncertainty": 0.333,
+          "quality_score": 0.782
+        },
+        {
+          "scenario_id": 4,
+          "consistency": 0.949,
+          "confidence": 0.577,
+          "uncertainty": 0.348,
+          "quality_score": 0.704
+        },
+        {
+          "scenario_id": 5,
+          "consistency": 0.835,
+          "confidence": 0.819,
+          "uncertainty": 0.109,
+          "quality_score": 0.838
+        },
+        {
+          "scenario_id": 6,
+          "consistency": 0.633,
+          "confidence": 0.679,
+          "uncertainty": 0.135,
+          "quality_score": 0.703
+        },
+        {
+          "scenario_id": 7,
+          "consistency": 0.791,
+          "confidence": 0.799,
+          "uncertainty": 0.214,
+          "quality_score": 0.794
+        },
+        {
+          "scenario_id": 8,
+          "consistency": 0.663,
+          "confidence": 0.541,
+          "uncertainty": 0.11,
+          "quality_score": 0.647
+        },
+        {
+          "scenario_id": 9,
+          "consistency": 0.734,
+          "confidence": 0.841,
+          "uncertainty": 0.284,
+          "quality_score": 0.784
+        },
+        {
+          "scenario_id": 10,
+          "consistency": 0.872,
+          "confidence": 0.722,
+          "uncertainty": 0.303,
+          "quality_score": 0.762
+        },
+        {
+          "scenario_id": 11,
+          "consistency": 0.623,
+          "confidence": 0.834,
+          "uncertainty": 0.143,
+          "quality_score": 0.776
+        },
+        {
+          "scenario_id": 12,
+          "consistency": 0.947,
+          "confidence": 0.571,
+          "uncertainty": 0.228,
+          "quality_score": 0.724
+        },
+        {
+          "scenario_id": 13,
+          "consistency": 0.622,
+          "confidence": 0.686,
+          "uncertainty": 0.353,
+          "quality_score": 0.659
+        },
+        {
+          "scenario_id": 14,
+          "consistency": 0.858,
+          "confidence": 0.835,
+          "uncertainty": 0.382,
+          "quality_score": 0.799
+        },
+        {
+          "scenario_id": 15,
+          "consistency": 0.907,
+          "confidence": 0.713,
+          "uncertainty": 0.122,
+          "quality_score": 0.805
+        },
+        {
+          "scenario_id": 16,
+          "consistency": 0.931,
+          "confidence": 0.66,
+          "uncertainty": 0.396,
+          "quality_score": 0.73
+        },
+        {
+          "scenario_id": 17,
+          "consistency": 0.88,
+          "confidence": 0.858,
+          "uncertainty": 0.277,
+          "quality_score": 0.838
+        },
+        {
+          "scenario_id": 18,
+          "consistency": 0.794,
+          "confidence": 0.847,
+          "uncertainty": 0.109,
+          "quality_score": 0.84
+        },
+        {
+          "scenario_id": 19,
+          "consistency": 0.697,
+          "confidence": 0.693,
+          "uncertainty": 0.376,
+          "quality_score": 0.68
+        },
+        {
+          "scenario_id": 20,
+          "consistency": 0.92,
+          "confidence": 0.735,
+          "uncertainty": 0.29,
+          "quality_score": 0.785
+        }
+      ]
+    },
+    {
+      "weights": {
+        "alpha": 0.4,
+        "beta": 0.6,
+        "gamma": 0.2
+      },
+      "average_quality_score": 0.862,
+      "std_quality_score": 0.076,
+      "scenarios": [
+        {
+          "scenario_id": 1,
+          "consistency": 0.778,
+          "confidence": 0.513,
+          "uncertainty": 0.384,
+          "quality_score": 0.742
+        },
+        {
+          "scenario_id": 2,
+          "consistency": 0.731,
+          "confidence": 0.798,
+          "uncertainty": 0.339,
+          "quality_score": 0.903
+        },
+        {
+          "scenario_id": 3,
+          "consistency": 0.904,
+          "confidence": 0.694,
+          "uncertainty": 0.169,
+          "quality_score": 0.944
+        },
+        {
+          "scenario_id": 4,
+          "consistency": 0.941,
+          "confidence": 0.631,
+          "uncertainty": 0.222,
+          "quality_score": 0.91
+        },
+        {
+          "scenario_id": 5,
+          "consistency": 0.731,
+          "confidence": 0.628,
+          "uncertainty": 0.179,
+          "quality_score": 0.834
+        },
+        {
+          "scenario_id": 6,
+          "consistency": 0.918,
+          "confidence": 0.701,
+          "uncertainty": 0.182,
+          "quality_score": 0.951
+        },
+        {
+          "scenario_id": 7,
+          "consistency": 0.827,
+          "confidence": 0.819,
+          "uncertainty": 0.28,
+          "quality_score": 0.966
+        },
+        {
+          "scenario_id": 8,
+          "consistency": 0.696,
+          "confidence": 0.566,
+          "uncertainty": 0.163,
+          "quality_score": 0.785
+        },
+        {
+          "scenario_id": 9,
+          "consistency": 0.65,
+          "confidence": 0.616,
+          "uncertainty": 0.347,
+          "quality_score": 0.76
+        },
+        {
+          "scenario_id": 10,
+          "consistency": 0.735,
+          "confidence": 0.667,
+          "uncertainty": 0.357,
+          "quality_score": 0.823
+        },
+        {
+          "scenario_id": 11,
+          "consistency": 0.615,
+          "confidence": 0.698,
+          "uncertainty": 0.16,
+          "quality_score": 0.833
+        },
+        {
+          "scenario_id": 12,
+          "consistency": 0.745,
+          "confidence": 0.619,
+          "uncertainty": 0.107,
+          "quality_score": 0.848
+        },
+        {
+          "scenario_id": 13,
+          "consistency": 0.647,
+          "confidence": 0.628,
+          "uncertainty": 0.257,
+          "quality_score": 0.784
+        },
+        {
+          "scenario_id": 14,
+          "consistency": 0.818,
+          "confidence": 0.802,
+          "uncertainty": 0.126,
+          "quality_score": 0.983
+        },
+        {
+          "scenario_id": 15,
+          "consistency": 0.778,
+          "confidence": 0.833,
+          "uncertainty": 0.31,
+          "quality_score": 0.949
+        },
+        {
+          "scenario_id": 16,
+          "consistency": 0.881,
+          "confidence": 0.607,
+          "uncertainty": 0.296,
+          "quality_score": 0.858
+        },
+        {
+          "scenario_id": 17,
+          "consistency": 0.63,
+          "confidence": 0.831,
+          "uncertainty": 0.317,
+          "quality_score": 0.887
+        },
+        {
+          "scenario_id": 18,
+          "consistency": 0.65,
+          "confidence": 0.703,
+          "uncertainty": 0.339,
+          "quality_score": 0.814
+        },
+        {
+          "scenario_id": 19,
+          "consistency": 0.711,
+          "confidence": 0.84,
+          "uncertainty": 0.28,
+          "quality_score": 0.932
+        },
+        {
+          "scenario_id": 20,
+          "consistency": 0.674,
+          "confidence": 0.521,
+          "uncertainty": 0.227,
+          "quality_score": 0.737
+        }
+      ]
+    },
+    {
+      "weights": {
+        "alpha": 0.5,
+        "beta": 0.4,
+        "gamma": 0.1
+      },
+      "average_quality_score": 0.752,
+      "std_quality_score": 0.081,
+      "scenarios": [
+        {
+          "scenario_id": 1,
+          "consistency": 0.835,
+          "confidence": 0.799,
+          "uncertainty": 0.196,
+          "quality_score": 0.818
+        },
+        {
+          "scenario_id": 2,
+          "consistency": 0.679,
+          "confidence": 0.835,
+          "uncertainty": 0.242,
+          "quality_score": 0.749
+        },
+        {
+          "scenario_id": 3,
+          "consistency": 0.655,
+          "confidence": 0.593,
+          "uncertainty": 0.21,
+          "quality_score": 0.644
+        },
+        {
+          "scenario_id": 4,
+          "consistency": 0.667,
+          "confidence": 0.5,
+          "uncertainty": 0.121,
+          "quality_score": 0.622
+        },
+        {
+          "scenario_id": 5,
+          "consistency": 0.655,
+          "confidence": 0.862,
+          "uncertainty": 0.19,
+          "quality_score": 0.753
+        },
+        {
+          "scenario_id": 6,
+          "consistency": 0.85,
+          "confidence": 0.867,
+          "uncertainty": 0.243,
+          "quality_score": 0.848
+        },
+        {
+          "scenario_id": 7,
+          "consistency": 0.933,
+          "confidence": 0.771,
+          "uncertainty": 0.196,
+          "quality_score": 0.855
+        },
+        {
+          "scenario_id": 8,
+          "consistency": 0.915,
+          "confidence": 0.573,
+          "uncertainty": 0.293,
+          "quality_score": 0.757
+        },
+        {
+          "scenario_id": 9,
+          "consistency": 0.605,
+          "confidence": 0.539,
+          "uncertainty": 0.391,
+          "quality_score": 0.579
+        },
+        {
+          "scenario_id": 10,
+          "consistency": 0.73,
+          "confidence": 0.717,
+          "uncertainty": 0.26,
+          "quality_score": 0.726
+        },
+        {
+          "scenario_id": 11,
+          "consistency": 0.665,
+          "confidence": 0.614,
+          "uncertainty": 0.332,
+          "quality_score": 0.645
+        },
+        {
+          "scenario_id": 12,
+          "consistency": 0.874,
+          "confidence": 0.776,
+          "uncertainty": 0.254,
+          "quality_score": 0.822
+        },
+        {
+          "scenario_id": 13,
+          "consistency": 0.809,
+          "confidence": 0.513,
+          "uncertainty": 0.308,
+          "quality_score": 0.679
+        },
+        {
+          "scenario_id": 14,
+          "consistency": 0.861,
+          "confidence": 0.654,
+          "uncertainty": 0.13,
+          "quality_score": 0.779
+        },
+        {
+          "scenario_id": 15,
+          "consistency": 0.782,
+          "confidence": 0.84,
+          "uncertainty": 0.215,
+          "quality_score": 0.805
+        },
+        {
+          "scenario_id": 16,
+          "consistency": 0.687,
+          "confidence": 0.685,
+          "uncertainty": 0.199,
+          "quality_score": 0.697
+        },
+        {
+          "scenario_id": 17,
+          "consistency": 0.735,
+          "confidence": 0.809,
+          "uncertainty": 0.184,
+          "quality_score": 0.773
+        },
+        {
+          "scenario_id": 18,
+          "consistency": 0.829,
+          "confidence": 0.877,
+          "uncertainty": 0.285,
+          "quality_score": 0.837
+        },
+        {
+          "scenario_id": 19,
+          "consistency": 0.872,
+          "confidence": 0.885,
+          "uncertainty": 0.347,
+          "quality_score": 0.855
+        },
+        {
+          "scenario_id": 20,
+          "consistency": 0.822,
+          "confidence": 0.757,
+          "uncertainty": 0.169,
+          "quality_score": 0.797
+        }
+      ]
+    },
+    {
+      "weights": {
+        "alpha": 0.6,
+        "beta": 0.3,
+        "gamma": 0.1
+      },
+      "average_quality_score": 0.741,
+      "std_quality_score": 0.047,
+      "scenarios": [
+        {
+          "scenario_id": 1,
+          "consistency": 0.747,
+          "confidence": 0.701,
+          "uncertainty": 0.396,
+          "quality_score": 0.719
+        },
+        {
+          "scenario_id": 2,
+          "consistency": 0.732,
+          "confidence": 0.564,
+          "uncertainty": 0.262,
+          "quality_score": 0.682
+        },
+        {
+          "scenario_id": 3,
+          "consistency": 0.77,
+          "confidence": 0.63,
+          "uncertainty": 0.169,
+          "quality_score": 0.734
+        },
+        {
+          "scenario_id": 4,
+          "consistency": 0.716,
+          "confidence": 0.72,
+          "uncertainty": 0.125,
+          "quality_score": 0.733
+        },
+        {
+          "scenario_id": 5,
+          "consistency": 0.705,
+          "confidence": 0.664,
+          "uncertainty": 0.256,
+          "quality_score": 0.697
+        },
+        {
+          "scenario_id": 6,
+          "consistency": 0.825,
+          "confidence": 0.573,
+          "uncertainty": 0.291,
+          "quality_score": 0.738
+        },
+        {
+          "scenario_id": 7,
+          "consistency": 0.935,
+          "confidence": 0.68,
+          "uncertainty": 0.231,
+          "quality_score": 0.842
+        },
+        {
+          "scenario_id": 8,
+          "consistency": 0.716,
+          "confidence": 0.568,
+          "uncertainty": 0.361,
+          "quality_score": 0.664
+        },
+        {
+          "scenario_id": 9,
+          "consistency": 0.873,
+          "confidence": 0.579,
+          "uncertainty": 0.273,
+          "quality_score": 0.77
+        },
+        {
+          "scenario_id": 10,
+          "consistency": 0.914,
+          "confidence": 0.71,
+          "uncertainty": 0.205,
+          "quality_score": 0.841
+        },
+        {
+          "scenario_id": 11,
+          "consistency": 0.632,
+          "confidence": 0.828,
+          "uncertainty": 0.339,
+          "quality_score": 0.693
+        },
+        {
+          "scenario_id": 12,
+          "consistency": 0.729,
+          "confidence": 0.864,
+          "uncertainty": 0.368,
+          "quality_score": 0.76
+        },
+        {
+          "scenario_id": 13,
+          "consistency": 0.71,
+          "confidence": 0.743,
+          "uncertainty": 0.179,
+          "quality_score": 0.731
+        },
+        {
+          "scenario_id": 14,
+          "consistency": 0.812,
+          "confidence": 0.526,
+          "uncertainty": 0.129,
+          "quality_score": 0.732
+        },
+        {
+          "scenario_id": 15,
+          "consistency": 0.684,
+          "confidence": 0.745,
+          "uncertainty": 0.397,
+          "quality_score": 0.694
+        },
+        {
+          "scenario_id": 16,
+          "consistency": 0.638,
+          "confidence": 0.878,
+          "uncertainty": 0.31,
+          "quality_score": 0.716
+        },
+        {
+          "scenario_id": 17,
+          "consistency": 0.819,
+          "confidence": 0.727,
+          "uncertainty": 0.278,
+          "quality_score": 0.782
+        },
+        {
+          "scenario_id": 18,
+          "consistency": 0.839,
+          "confidence": 0.721,
+          "uncertainty": 0.291,
+          "quality_score": 0.791
+        },
+        {
+          "scenario_id": 19,
+          "consistency": 0.807,
+          "confidence": 0.647,
+          "uncertainty": 0.121,
+          "quality_score": 0.766
+        },
+        {
+          "scenario_id": 20,
+          "consistency": 0.692,
+          "confidence": 0.787,
+          "uncertainty": 0.156,
+          "quality_score": 0.736
+        }
+      ]
+    },
+    {
+      "weights": {
+        "alpha": 0.2,
+        "beta": 0.7,
+        "gamma": 0.1
+      },
+      "average_quality_score": 0.729,
+      "std_quality_score": 0.071,
+      "scenarios": [
+        {
+          "scenario_id": 1,
+          "consistency": 0.651,
+          "confidence": 0.564,
+          "uncertainty": 0.225,
+          "quality_score": 0.602
+        },
+        {
+          "scenario_id": 2,
+          "consistency": 0.897,
+          "confidence": 0.775,
+          "uncertainty": 0.396,
+          "quality_score": 0.782
+        },
+        {
+          "scenario_id": 3,
+          "consistency": 0.726,
+          "confidence": 0.631,
+          "uncertainty": 0.39,
+          "quality_score": 0.648
+        },
+        {
+          "scenario_id": 4,
+          "consistency": 0.745,
+          "confidence": 0.55,
+          "uncertainty": 0.316,
+          "quality_score": 0.603
+        },
+        {
+          "scenario_id": 5,
+          "consistency": 0.831,
+          "confidence": 0.785,
+          "uncertainty": 0.287,
+          "quality_score": 0.787
+        },
+        {
+          "scenario_id": 6,
+          "consistency": 0.874,
+          "confidence": 0.593,
+          "uncertainty": 0.25,
+          "quality_score": 0.665
+        },
+        {
+          "scenario_id": 7,
+          "consistency": 0.732,
+          "confidence": 0.707,
+          "uncertainty": 0.219,
+          "quality_score": 0.72
+        },
+        {
+          "scenario_id": 8,
+          "consistency": 0.86,
+          "confidence": 0.647,
+          "uncertainty": 0.331,
+          "quality_score": 0.692
+        },
+        {
+          "scenario_id": 9,
+          "consistency": 0.87,
+          "confidence": 0.82,
+          "uncertainty": 0.212,
+          "quality_score": 0.827
+        },
+        {
+          "scenario_id": 10,
+          "consistency": 0.761,
+          "confidence": 0.565,
+          "uncertainty": 0.14,
+          "quality_score": 0.634
+        },
+        {
+          "scenario_id": 11,
+          "consistency": 0.756,
+          "confidence": 0.845,
+          "uncertainty": 0.252,
+          "quality_score": 0.818
+        },
+        {
+          "scenario_id": 12,
+          "consistency": 0.762,
+          "confidence": 0.793,
+          "uncertainty": 0.386,
+          "quality_score": 0.769
+        },
+        {
+          "scenario_id": 13,
+          "consistency": 0.692,
+          "confidence": 0.832,
+          "uncertainty": 0.145,
+          "quality_score": 0.806
+        },
+        {
+          "scenario_id": 14,
+          "consistency": 0.719,
+          "confidence": 0.625,
+          "uncertainty": 0.191,
+          "quality_score": 0.662
+        },
+        {
+          "scenario_id": 15,
+          "consistency": 0.621,
+          "confidence": 0.759,
+          "uncertainty": 0.128,
+          "quality_score": 0.743
+        },
+        {
+          "scenario_id": 16,
+          "consistency": 0.756,
+          "confidence": 0.716,
+          "uncertainty": 0.369,
+          "quality_score": 0.716
+        },
+        {
+          "scenario_id": 17,
+          "consistency": 0.756,
+          "confidence": 0.798,
+          "uncertainty": 0.191,
+          "quality_score": 0.791
+        },
+        {
+          "scenario_id": 18,
+          "consistency": 0.894,
+          "confidence": 0.685,
+          "uncertainty": 0.177,
+          "quality_score": 0.741
+        },
+        {
+          "scenario_id": 19,
+          "consistency": 0.769,
+          "confidence": 0.805,
+          "uncertainty": 0.267,
+          "quality_score": 0.791
+        },
+        {
+          "scenario_id": 20,
+          "consistency": 0.774,
+          "confidence": 0.8,
+          "uncertainty": 0.277,
+          "quality_score": 0.787
+        }
+      ]
+    }
+  ],
+  "calibration_experiments": [
+    {
+      "target_reliability": 0.5,
+      "mean_predicted_score": 0.489,
+      "mean_actual_reliability": 0.504,
+      "calibration_error": 0.058,
+      "samples": 50
+    },
+    {
+      "target_reliability": 0.6,
+      "mean_predicted_score": 0.593,
+      "mean_actual_reliability": 0.601,
+      "calibration_error": 0.067,
+      "samples": 50
+    },
+    {
+      "target_reliability": 0.7,
+      "mean_predicted_score": 0.694,
+      "mean_actual_reliability": 0.706,
+      "calibration_error": 0.064,
+      "samples": 50
+    },
+    {
+      "target_reliability": 0.8,
+      "mean_predicted_score": 0.791,
+      "mean_actual_reliability": 0.795,
+      "calibration_error": 0.066,
+      "samples": 50
+    },
+    {
+      "target_reliability": 0.9,
+      "mean_predicted_score": 0.895,
+      "mean_actual_reliability": 0.908,
+      "calibration_error": 0.071,
+      "samples": 50
+    }
+  ],
+  "optimal_weights": {
+    "alpha": 0.4,
+    "beta": 0.6,
+    "gamma": 0.2,
+    "rationale": "Balanced emphasis on consistency and confidence, with moderate uncertainty penalty"
+  }
+}

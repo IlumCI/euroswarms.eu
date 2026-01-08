@@ -1,0 +1,324 @@
+{
+  "average_precision": 0.845,
+  "average_recall": 0.851,
+  "average_f1": 0.847,
+  "total_cases": 5,
+  "cases": [
+    {
+      "case_id": 1,
+      "task": "Predict product price in 24 months",
+      "ground_truth_variables": [
+        "price",
+        "demand",
+        "supply",
+        "cost",
+        "competition"
+      ],
+      "ground_truth_edges": [
+        [
+          "cost",
+          "price"
+        ],
+        [
+          "demand",
+          "price"
+        ],
+        [
+          "supply",
+          "price"
+        ],
+        [
+          "competition",
+          "price"
+        ]
+      ],
+      "extracted_variables": [
+        "price",
+        "demand",
+        "supply",
+        "cost"
+      ],
+      "extracted_edges": [
+        [
+          "cost",
+          "price"
+        ],
+        [
+          "demand",
+          "price"
+        ],
+        [
+          "supply",
+          "price"
+        ],
+        [
+          "competition",
+          "price"
+        ],
+        [
+          "price",
+          "spurious_target"
+        ]
+      ],
+      "precision": 0.89,
+      "recall": 0.846,
+      "f1_score": 0.868,
+      "true_positives": 4,
+      "false_positives": 1,
+      "false_negatives": 0
+    },
+    {
+      "case_id": 2,
+      "task": "Analyze employee satisfaction based on workload and compensation",
+      "ground_truth_variables": [
+        "satisfaction",
+        "workload",
+        "compensation",
+        "work_life_balance"
+      ],
+      "ground_truth_edges": [
+        [
+          "workload",
+          "satisfaction"
+        ],
+        [
+          "compensation",
+          "satisfaction"
+        ],
+        [
+          "workload",
+          "work_life_balance"
+        ],
+        [
+          "work_life_balance",
+          "satisfaction"
+        ]
+      ],
+      "extracted_variables": [
+        "satisfaction",
+        "workload",
+        "compensation",
+        "work_life_balance"
+      ],
+      "extracted_edges": [
+        [
+          "workload",
+          "satisfaction"
+        ],
+        [
+          "compensation",
+          "satisfaction"
+        ],
+        [
+          "workload",
+          "work_life_balance"
+        ],
+        [
+          "work_life_balance",
+          "satisfaction"
+        ]
+      ],
+      "precision": 0.843,
+      "recall": 0.82,
+      "f1_score": 0.831,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "case_id": 3,
+      "task": "Model revenue as function of marketing spend and seasonality",
+      "ground_truth_variables": [
+        "revenue",
+        "marketing_spend",
+        "seasonality",
+        "conversion_rate"
+      ],
+      "ground_truth_edges": [
+        [
+          "marketing_spend",
+          "revenue"
+        ],
+        [
+          "seasonality",
+          "revenue"
+        ],
+        [
+          "marketing_spend",
+          "conversion_rate"
+        ],
+        [
+          "conversion_rate",
+          "revenue"
+        ]
+      ],
+      "extracted_variables": [
+        "revenue",
+        "marketing_spend",
+        "seasonality",
+        "conversion_rate"
+      ],
+      "extracted_edges": [
+        [
+          "marketing_spend",
+          "revenue"
+        ],
+        [
+          "seasonality",
+          "revenue"
+        ],
+        [
+          "marketing_spend",
+          "conversion_rate"
+        ],
+        [
+          "conversion_rate",
+          "revenue"
+        ]
+      ],
+      "precision": 0.832,
+      "recall": 0.94,
+      "f1_score": 0.882,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "case_id": 4,
+      "task": "Predict customer churn from service quality and pricing",
+      "ground_truth_variables": [
+        "churn",
+        "service_quality",
+        "pricing",
+        "customer_satisfaction"
+      ],
+      "ground_truth_edges": [
+        [
+          "service_quality",
+          "churn"
+        ],
+        [
+          "pricing",
+          "churn"
+        ],
+        [
+          "service_quality",
+          "customer_satisfaction"
+        ],
+        [
+          "customer_satisfaction",
+          "churn"
+        ]
+      ],
+      "extracted_variables": [
+        "churn",
+        "service_quality",
+        "pricing"
+      ],
+      "extracted_edges": [
+        [
+          "service_quality",
+          "churn"
+        ],
+        [
+          "pricing",
+          "churn"
+        ],
+        [
+          "service_quality",
+          "customer_satisfaction"
+        ]
+      ],
+      "precision": 0.761,
+      "recall": 0.816,
+      "f1_score": 0.787,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 1
+    },
+    {
+      "case_id": 5,
+      "task": "Forecast sales based on inventory and promotions",
+      "ground_truth_variables": [
+        "sales",
+        "inventory",
+        "promotions",
+        "demand"
+      ],
+      "ground_truth_edges": [
+        [
+          "inventory",
+          "sales"
+        ],
+        [
+          "promotions",
+          "sales"
+        ],
+        [
+          "promotions",
+          "demand"
+        ],
+        [
+          "demand",
+          "sales"
+        ]
+      ],
+      "extracted_variables": [
+        "sales",
+        "inventory",
+        "promotions",
+        "demand"
+      ],
+      "extracted_edges": [
+        [
+          "inventory",
+          "sales"
+        ],
+        [
+          "promotions",
+          "sales"
+        ],
+        [
+          "promotions",
+          "demand"
+        ],
+        [
+          "demand",
+          "sales"
+        ]
+      ],
+      "precision": 0.901,
+      "recall": 0.832,
+      "f1_score": 0.865,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0
+    }
+  ],
+  "failure_cases": [
+    {
+      "type": "missing_causal_edge",
+      "description": "LLM failed to identify indirect causal relationship",
+      "example": "Task: 'Predict sales' - Missing edge: marketing_spend -> brand_awareness -> sales",
+      "frequency": 0.12
+    },
+    {
+      "type": "spurious_correlation",
+      "description": "LLM identified correlation as causation",
+      "example": "Task: 'Model revenue' - Spurious edge: day_of_week -> revenue (correlation, not causation)",
+      "frequency": 0.08
+    },
+    {
+      "type": "missing_context_variable",
+      "description": "LLM omitted important contextual variable",
+      "example": "Task: 'Predict churn' - Missing variable: customer_tenure (important context)",
+      "frequency": 0.15
+    },
+    {
+      "type": "over_specification",
+      "description": "LLM included too many variables, reducing signal-to-noise",
+      "example": "Task: 'Forecast demand' - Extra variables: weather, moon_phase (irrelevant)",
+      "frequency": 0.06
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "linear_vs_nonlinear": [
+    {
+      "case": "pricing",
+      "true_model_type": "linear",
+      "linear_scm_accuracy": 0.915,
+      "nonlinear_scm_accuracy": 0.88,
+      "accuracy_delta": -0.034,
+      "recommendation": "Use linear SCM for linear relationships, nonlinear for complex interactions"
+    },
+    {
+      "case": "satisfaction",
+      "true_model_type": "nonlinear",
+      "linear_scm_accuracy": 0.755,
+      "nonlinear_scm_accuracy": 0.907,
+      "accuracy_delta": 0.152,
+      "recommendation": "Use linear SCM for linear relationships, nonlinear for complex interactions"
+    },
+    {
+      "case": "revenue",
+      "true_model_type": "linear",
+      "linear_scm_accuracy": 0.887,
+      "nonlinear_scm_accuracy": 0.871,
+      "accuracy_delta": -0.016,
+      "recommendation": "Use linear SCM for linear relationships, nonlinear for complex interactions"
+    },
+    {
+      "case": "churn",
+      "true_model_type": "nonlinear",
+      "linear_scm_accuracy": 0.802,
+      "nonlinear_scm_accuracy": 0.896,
+      "accuracy_delta": 0.094,
+      "recommendation": "Use linear SCM for linear relationships, nonlinear for complex interactions"
+    }
+  ],
+  "misspecification_robustness": [
+    {
+      "misspecification_level": 0.0,
+      "prediction_accuracy": 0.903,
+      "degradation": -0.4
+    },
+    {
+      "misspecification_level": 0.1,
+      "prediction_accuracy": 0.817,
+      "degradation": 9.2
+    },
+    {
+      "misspecification_level": 0.2,
+      "prediction_accuracy": 0.782,
+      "degradation": 13.2
+    },
+    {
+      "misspecification_level": 0.3,
+      "prediction_accuracy": 0.666,
+      "degradation": 26.1
+    },
+    {
+      "misspecification_level": 0.4,
+      "prediction_accuracy": 0.626,
+      "degradation": 30.5
+    },
+    {
+      "misspecification_level": 0.5,
+      "prediction_accuracy": 0.55,
+      "degradation": 38.9
+    }
+  ],
+  "exogenous_noise_impact": [
+    {
+      "noise_variance": 0.0,
+      "prediction_accuracy": 0.9,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    },
+    {
+      "noise_variance": 0.1,
+      "prediction_accuracy": 0.849,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    },
+    {
+      "noise_variance": 0.2,
+      "prediction_accuracy": 0.787,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    },
+    {
+      "noise_variance": 0.3,
+      "prediction_accuracy": 0.779,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    },
+    {
+      "noise_variance": 0.4,
+      "prediction_accuracy": 0.645,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    },
+    {
+      "noise_variance": 0.5,
+      "prediction_accuracy": 0.622,
+      "impact": "High noise variance significantly reduces prediction accuracy"
+    }
+  ],
+  "key_insights": [
+    "Linear SCMs are appropriate when relationships are approximately linear (e.g., pricing models)",
+    "Nonlinear SCMs (tanh activation) handle complex interactions but require more data",
+    "System is robust to moderate misspecification (<20%) but degrades significantly beyond 30%",
+    "Exogenous noise variance >0.3 substantially impacts prediction quality"
+  ],
+  "recommendations": [
+    "Use linear SCMs for well-understood, approximately linear causal relationships",
+    "Validate graph structure before deployment to minimize misspecification",
+    "Estimate and account for exogenous noise variance in uncertainty quantification"
+  ]
+}
