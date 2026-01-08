@@ -66,7 +66,7 @@ function CrcaInstallation() {
             <p className="leading-relaxed mb-4">
               For development or to use the latest features, install in editable mode with development dependencies:
             </p>
-            <CodeBlock code="pip install -e \".[dev]\"" language="bash" />
+              <CodeBlock code={'pip install -e ".[dev]"'} language="bash" />
             <p className="leading-relaxed mt-4 text-sm opacity-75">
               This includes development tools like pytest, black, mypy, and ruff.
             </p>
