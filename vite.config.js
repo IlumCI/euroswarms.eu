@@ -12,7 +12,8 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-  base: '/euroswarms.eu/',
+  // IMPORTANT: custom domain → root
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
