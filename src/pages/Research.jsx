@@ -91,7 +91,7 @@ function Research() {
             extraction from natural language, enabling users to build causal models without
             manual graph specification. We demonstrate a meta-Monte Carlo approach to
             counterfactual scenario generation that accounts for graph uncertainty and provides
-            quality-assessed predictions. CR-CA achieves <MathRenderer>$O(|V| + |E|)$</MathRenderer>
+            quality-assessed predictions. CR-CA achieves <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
             complexity for single predictions and supports efficient batch processing for ensemble
             forecasting. The framework is implemented in pure Python with rustworkx for efficient
             graph operations, making it suitable for both research and <strong>production applications</strong>.
@@ -152,7 +152,7 @@ function Research() {
             adaptive intervention sampling, graph variation sampling, and quality assessment.
           </li>
           <li className="leading-relaxed">
-            <strong>Efficient Implementation:</strong> <MathRenderer>$O(|V| + |E|)$</MathRenderer>
+            <strong>Efficient Implementation:</strong> <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
             complexity for single predictions with vectorized batch processing, implemented
             in pure Python with rustworkx for graph operations.
           </li>
@@ -173,13 +173,13 @@ function Research() {
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            <MathRenderer>$U$</MathRenderer> is a set of exogenous (unobserved) variables
+            <MathRenderer>{'$U$'}</MathRenderer> is a set of exogenous (unobserved) variables
           </li>
           <li className="leading-relaxed">
-            <MathRenderer>$V$</MathRenderer> is a set of endogenous (observed) variables
+            <MathRenderer>{'$V$'}</MathRenderer> is a set of endogenous (observed) variables
           </li>
           <li className="leading-relaxed">
-            <MathRenderer>$F$</MathRenderer> is a set of functions <MathRenderer>{'$F = \\{f_i\\}$'}</MathRenderer>
+            <MathRenderer>{'$F$'}</MathRenderer> is a set of functions <MathRenderer>{'$F = \\{f_i\\}$'}</MathRenderer>
             such that each <MathRenderer>{'$v_i \\in V$'}</MathRenderer> is determined by
             <MathRenderer display={true}>{'$$v_i = f_i(pa_i, u_i)$$'}</MathRenderer>
             where <MathRenderer>{'$pa_i \\subseteq V \\setminus \\{v_i\\}$'}</MathRenderer> are the
@@ -188,13 +188,13 @@ function Research() {
             <MathRenderer>{'$v_i$'}</MathRenderer>.
           </li>
           <li className="leading-relaxed">
-            <MathRenderer>$P(U)$</MathRenderer> is a probability distribution over
+            <MathRenderer>{'$P(U)$'}</MathRenderer> is a probability distribution over
             exogenous variables
           </li>
         </ul>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          The causal graph <MathRenderer>$G = (V, E)$</MathRenderer> is a directed acyclic
+          The causal graph <MathRenderer>{'$G = (V, E)$'}</MathRenderer> is a directed acyclic
           graph (DAG) where nodes represent variables and edges represent direct causal
           relationships. An edge <MathRenderer>{'$v_i \\to v_j$'}</MathRenderer> indicates that
           <MathRenderer>{'$v_i$'}</MathRenderer> is a direct cause of <MathRenderer>{'$v_j$'}</MathRenderer>.
@@ -206,11 +206,11 @@ function Research() {
         </p>
         <ol className="space-y-3 max-w-4xl mb-6 list-decimal list-inside">
           <li className="leading-relaxed">
-            <strong>Association (Seeing):</strong> <MathRenderer>$P(Y|X)$</MathRenderer>—observing
+            <strong>Association (Seeing):</strong> <MathRenderer>{'$P(Y|X)$'}</MathRenderer>—observing
             correlations in data
           </li>
           <li className="leading-relaxed">
-            <strong>Intervention (Doing):</strong> <MathRenderer>$P(Y|do(X))$</MathRenderer>—predicting
+            <strong>Intervention (Doing):</strong> <MathRenderer>{'$P(Y|do(X))$'}</MathRenderer>—predicting
             effects of actions
           </li>
           <li className="leading-relaxed">
@@ -227,8 +227,8 @@ function Research() {
 
         <h3 className="font-serif text-2xl mb-4">2.3 Counterfactual Analysis</h3>
         <p className="leading-relaxed max-w-4xl mb-6">
-          A counterfactual query asks: "What would have been the value of <MathRenderer>$Y$</MathRenderer>
-          had <MathRenderer>$X$</MathRenderer> been <MathRenderer>$x$</MathRenderer>, given that
+          A counterfactual query asks: "What would have been the value of <MathRenderer>{'$Y$'}</MathRenderer>
+          had <MathRenderer>{'$X$'}</MathRenderer> been <MathRenderer>{'$x$'}</MathRenderer>, given that
           we observed <MathRenderer>{'$X = x\'$'}</MathRenderer> and <MathRenderer>{'$Y = y\'$'}</MathRenderer>?"
           This is denoted <MathRenderer>{'$P(Y_x = y|X = x\', Y = y\')$'}</MathRenderer>.
         </p>
@@ -237,15 +237,15 @@ function Research() {
         </p>
         <ol className="space-y-3 max-w-4xl mb-6 list-decimal list-inside">
           <li className="leading-relaxed">
-            <strong>Abduction:</strong> Infer the exogenous variables <MathRenderer>$U$</MathRenderer>
+            <strong>Abduction:</strong> Infer the exogenous variables <MathRenderer>{'$U$'}</MathRenderer>
             from the observed evidence
           </li>
           <li className="leading-relaxed">
             <strong>Action:</strong> Modify the model to reflect the intervention
-            <MathRenderer>$do(X = x)$</MathRenderer>
+            <MathRenderer>{'$do(X = x)$'}</MathRenderer>
           </li>
           <li className="leading-relaxed">
-            <strong>Prediction:</strong> Compute the probability of <MathRenderer>$Y$</MathRenderer>
+            <strong>Prediction:</strong> Compute the probability of <MathRenderer>{'$Y$'}</MathRenderer>
             in the modified model
           </li>
         </ol>
@@ -333,9 +333,9 @@ function Research() {
         </ol>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          The complexity of deterministic mode is <MathRenderer>$O(|V| + |E|)$</MathRenderer>
-          per prediction, where <MathRenderer>$|V|$</MathRenderer> is the number of variables
-          and <MathRenderer>$|E|$</MathRenderer> is the number of edges. This linear complexity
+          The complexity of deterministic mode is <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
+          per prediction, where <MathRenderer>{'$|V|$'}</MathRenderer> is the number of variables
+          and <MathRenderer>{'$|E|$'}</MathRenderer> is the number of edges. This linear complexity
           enables real-time prediction even for large causal graphs.
         </p>
       </section>
@@ -355,7 +355,7 @@ function Research() {
         </p>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          <strong>Mathematical Formulation:</strong> Given a task <MathRenderer>$T$</MathRenderer>
+          <strong>Mathematical Formulation:</strong> Given a task <MathRenderer>{'$T$'}</MathRenderer>
           (natural language string), the extraction function <MathRenderer>{'$f_{LLM}$'}</MathRenderer>
           maps it to a structured representation:
         </p>
@@ -364,8 +364,8 @@ function Research() {
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
           where <MathRenderer>{'$V = \\{v_1, v_2, \\ldots, v_n\\}$'}</MathRenderer> is the set of
-          variables, <MathRenderer>$E \subseteq V \times V$</MathRenderer> is the set of causal
-          edges, and <MathRenderer>$R$</MathRenderer> is the reasoning explanation.
+          variables, <MathRenderer>{'$E \\subseteq V \\times V$'}</MathRenderer> is the set of causal
+          edges, and <MathRenderer>{'$R$'}</MathRenderer> is the reasoning explanation.
         </p>
 
         <h3 className="font-serif text-2xl mb-4">4.2 Implementation Details</h3>
@@ -501,8 +501,8 @@ Return ONLY valid JSON, no other text."""`}
         </ul>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          Each edge <MathRenderer>{'$e_{ij}$'}</MathRenderer> from variable <MathRenderer>$i$</MathRenderer>
-          to variable <MathRenderer>$j$</MathRenderer> is characterized by:
+          Each edge <MathRenderer>{'$e_{ij}$'}</MathRenderer> from variable <MathRenderer>{'$i$'}</MathRenderer>
+          to variable <MathRenderer>{'$j$'}</MathRenderer> is characterized by:
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
@@ -521,7 +521,7 @@ Return ONLY valid JSON, no other text."""`}
         <h3 className="font-serif text-2xl mb-4">5.2 Graph Operations</h3>
         <p className="leading-relaxed max-w-4xl mb-6">
           <strong>Topological Sort:</strong> Computes a valid causal ordering using rustworkx's
-          <code>topological_sort()</code> with <MathRenderer>$O(|V| + |E|)$</MathRenderer> complexity.
+          <code>topological_sort()</code> with <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer> complexity.
           Falls back to manual Kahn's algorithm if rustworkx fails.
         </p>
         <p className="leading-relaxed max-w-4xl mb-6">
@@ -606,7 +606,7 @@ Return ONLY valid JSON, no other text."""`}
           {'$$z_j = \\sum_{i \\in PA_j} \\beta_{ij} z_i + \\epsilon_j$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-6">
-          where <MathRenderer>{'$PA_j$'}</MathRenderer> are the parents of variable <MathRenderer>$j$</MathRenderer>,
+          where <MathRenderer>{'$PA_j$'}</MathRenderer> are the parents of variable <MathRenderer>{'$j$'}</MathRenderer>,
           <MathRenderer>{'$\\beta_{ij}$'}</MathRenderer> is the edge strength, and <MathRenderer>{'$\\epsilon_j$'}</MathRenderer>
           is the exogenous noise (set to 0 for deterministic prediction).
         </p>
@@ -635,19 +635,19 @@ Return ONLY valid JSON, no other text."""`}
 
         <h3 className="font-serif text-2xl mb-4">6.4 Complexity Analysis</h3>
         <p className="leading-relaxed max-w-4xl mb-6">
-          The forward simulation algorithm has complexity <MathRenderer>$O(|V| + |E|)$</MathRenderer>:
+          The forward simulation algorithm has complexity <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>:
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            Topological sort: <MathRenderer>$O(|V| + |E|)$</MathRenderer>
+            Topological sort: <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
           </li>
           <li className="leading-relaxed">
-            Forward pass: <MathRenderer>$O(|V|)$</MathRenderer> nodes, each requiring
+            Forward pass: <MathRenderer>{'$O(|V|)$'}</MathRenderer> nodes, each requiring
             <MathRenderer>{'$O(\\text{deg}^+(v))$'}</MathRenderer> operations, totaling
-            <MathRenderer>$O(|E|)$</MathRenderer>
+            <MathRenderer>{'$O(|E|)$'}</MathRenderer>
           </li>
           <li className="leading-relaxed">
-            Standardization/de-standardization: <MathRenderer>$O(|V|)$</MathRenderer>
+            Standardization/de-standardization: <MathRenderer>{'$O(|V|)$'}</MathRenderer>
           </li>
         </ul>
 
@@ -768,14 +768,14 @@ Return ONLY valid JSON, no other text."""`}
 
         <h3 className="font-serif text-2xl mb-4">7.4 Formal Quality Score Derivation</h3>
         <p className="leading-relaxed max-w-4xl mb-6">
-          The quality score <MathRenderer>$Q$</MathRenderer> is formally defined as a weighted combination
+          The quality score <MathRenderer>{'$Q$'}</MathRenderer> is formally defined as a weighted combination
           of three components, each capturing a different aspect of prediction reliability:
         </p>
 
         <h4 className="font-serif text-xl mb-4">Component Definitions</h4>
         <p className="leading-relaxed max-w-4xl mb-4">
           <strong>Consistency:</strong> Measures agreement across graph variants. For predictions
-          <MathRenderer>{'$\\{y_1, y_2, \\ldots, y_n\\}$'}</MathRenderer> across <MathRenderer>$n$</MathRenderer> graph variants:
+          <MathRenderer>{'$\\{y_1, y_2, \\ldots, y_n\\}$'}</MathRenderer> across <MathRenderer>{'$n$'}</MathRenderer> graph variants:
         </p>
         <MathRenderer display={true}>
           {'$$\\text{consistency} = 1 - \\frac{\\text{std}(\\{y_i\\})}{\\text{mean}(|\\{y_i\\}|) + \\epsilon}$$'}
@@ -792,7 +792,7 @@ Return ONLY valid JSON, no other text."""`}
           {'$$\\text{confidence} = \\frac{1}{|P|} \\sum_{p \\in P} \\prod_{(i,j) \\in p} c_{ij}$$'}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-4">
-          where <MathRenderer>$P$</MathRenderer> is the set of causal paths from interventions to
+          where <MathRenderer>{'$P$'}</MathRenderer> is the set of causal paths from interventions to
           target variables, and <MathRenderer>{'$c_{ij}$'}</MathRenderer> is the confidence of edge
           <MathRenderer>{'$i \\to j$'}</MathRenderer>.
         </p>
@@ -912,11 +912,11 @@ Return ONLY valid JSON, no other text."""`}
         </p>
         <ul className="space-y-2 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            Single prediction: <MathRenderer>$O(|V| + |E|)$</MathRenderer>
+            Single prediction: <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
           </li>
           <li className="leading-relaxed">
-            Batch prediction: <MathRenderer>$O(B \cdot (|V| + |E|))$</MathRenderer> where
-            <MathRenderer>$B$</MathRenderer> is batch size
+            Batch prediction: <MathRenderer>{'$O(B \\cdot (|V| + |E|))$'}</MathRenderer> where
+            <MathRenderer>{'$B$'}</MathRenderer> is batch size
           </li>
           <li className="leading-relaxed">
             Vectorized parent aggregation reduces constant factors through NumPy operations
@@ -1071,7 +1071,7 @@ print(f"Counterfactual scenarios: {len(result['counterfactual_scenarios'])}")`}
         </div>
 
         <p className="leading-relaxed max-w-4xl mb-6">
-          The framework's complexity matches the theoretical <MathRenderer>$O(|V| + |E|)$</MathRenderer>
+          The framework's complexity matches the theoretical <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer>
           bound, with constant factors optimized through vectorized NumPy operations and efficient
           rustworkx graph algorithms.
         </p>
@@ -1300,7 +1300,7 @@ print(f"Counterfactual scenarios: {len(result['counterfactual_scenarios'])}")`}
           The automatic variable extraction mechanism eliminates the need for manual graph
           specification in most use cases, while the meta-Monte Carlo approach to counterfactual
           generation provides quality-assessed predictions that account for graph uncertainty.
-          The framework's <MathRenderer>$O(|V| + |E|)$</MathRenderer> complexity and efficient
+          The framework's <MathRenderer>{'$O(|V| + |E|)$'}</MathRenderer> complexity and efficient
           implementation enable real-time prediction even for large causal graphs.
         </p>
         <p className="leading-relaxed max-w-4xl mb-6">
