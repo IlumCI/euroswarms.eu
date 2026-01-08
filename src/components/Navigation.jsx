@@ -14,7 +14,7 @@ function Navigation() {
             <img 
               src={`${BASE_URL}assets/images/full-nobg.png`}
               alt="Euroswarms R&D Division" 
-              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto" 
+              className="h-32 sm:h-36 md:h-40 lg:h-48 w-auto" 
             />
           </Link>
           

@@ -54,6 +54,21 @@ function BaseLayout({ children, title = 'Euroswarms R&D Division', description =
                   </Link>
                 </li>
                 <li>
+                  <Link to="/crca/crca-sd" className="text-sm text-muted hover:text-accent transition-colors">
+                    CRCA-SD
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/crca/crca-cg" className="text-sm text-muted hover:text-accent transition-colors">
+                    CRCA-CG
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/crca/crca-q" className="text-sm text-muted hover:text-accent transition-colors">
+                    CRCA-Q
+                  </Link>
+                </li>
+                <li>
                   <Link to="/projects" className="text-sm text-muted hover:text-accent transition-colors">
                     All Projects
                   </Link>
@@ -78,6 +93,11 @@ function BaseLayout({ children, title = 'Euroswarms R&D Division', description =
                 <li>
                   <Link to="/publications" className="text-sm text-muted hover:text-accent transition-colors">
                     Publications
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/research" className="text-sm text-muted hover:text-accent transition-colors">
+                    Technical Research
                   </Link>
                 </li>
                 <li>

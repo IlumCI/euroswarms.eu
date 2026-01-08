@@ -113,6 +113,98 @@ function CrcaUseCases() {
         </div>
       </section>
 
+      <div className="divider"></div>
+
+      <section>
+        <h2 className="font-serif">Specialized Branch Use Cases</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <Link to="/crca/crca-sd" className="card p-8 block group">
+            <h3 className="font-serif text-xl mb-3 text-white">CRCA-SD: Socioeconomic Dynamics</h3>
+            <p className="leading-relaxed mb-4 text-blue-200">
+              MPC solver, governance systems, and real-time monitoring for complex policy analysis
+              and economic modeling.
+            </p>
+            <ul className="space-y-2 text-sm text-blue-200 mb-4">
+              <li>• Policy intervention analysis</li>
+              <li>• Economic system modeling</li>
+              <li>• Real-time monitoring</li>
+              <li>• Governance optimization</li>
+            </ul>
+            <span className="text-yellow-300 text-sm font-medium group-hover:text-white">
+              Learn more →
+            </span>
+          </Link>
+
+          <Link to="/crca/crca-cg" className="card p-8 block group">
+            <h3 className="font-serif text-xl mb-3 text-white">CRCA-CG: Corporate Governance</h3>
+            <p className="leading-relaxed mb-4 text-blue-200">
+              CorporateSwarm, ESG scoring, and multi-agent orchestration for organizational
+              decision-making and governance.
+            </p>
+            <ul className="space-y-2 text-sm text-blue-200 mb-4">
+              <li>• Corporate decision-making</li>
+              <li>• ESG scoring and analysis</li>
+              <li>• Multi-agent coordination</li>
+              <li>• Proposal evaluation</li>
+            </ul>
+            <span className="text-yellow-300 text-sm font-medium group-hover:text-white">
+              Learn more →
+            </span>
+          </Link>
+
+          <Link to="/crca/crca-q" className="card p-8 block group">
+            <h3 className="font-serif text-xl mb-3 text-white">CRCA-Q: Quantitative Trading</h3>
+            <p className="leading-relaxed mb-4 text-blue-200">
+              QuantTradingAgent, causal signals, and portfolio optimization for financial
+              market analysis and trading strategies.
+            </p>
+            <ul className="space-y-2 text-sm text-blue-200 mb-4">
+              <li>• Causal signal generation</li>
+              <li>• Portfolio optimization</li>
+              <li>• Market analysis</li>
+              <li>• Trading strategy development</li>
+            </ul>
+            <span className="text-yellow-300 text-sm font-medium group-hover:text-white">
+              Learn more →
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <div className="divider"></div>
+
+      <section>
+        <h2 className="font-serif">Policy Engine Use Cases</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div className="card-light p-8">
+            <h3 className="font-serif text-xl mb-3">Autonomous System Control</h3>
+            <p className="leading-relaxed mb-4">
+              Use doctrine-based policies to autonomously control systems with transparent,
+              auditable decision-making and intervention recovery.
+            </p>
+            <ul className="space-y-2 text-sm opacity-75">
+              <li>• Cloud resource management</li>
+              <li>• System performance optimization</li>
+              <li>• Automated intervention execution</li>
+              <li>• Event-sourced audit trails</li>
+            </ul>
+          </div>
+          <div className="card-light p-8">
+            <h3 className="font-serif text-xl mb-3">Policy Compliance & Governance</h3>
+            <p className="leading-relaxed mb-4">
+              Ensure systems operate within defined policies, with rollback capabilities
+              and comprehensive monitoring.
+            </p>
+            <ul className="space-y-2 text-sm opacity-75">
+              <li>• Policy enforcement</li>
+              <li>• Risk budget management</li>
+              <li>• Intervention rollback</li>
+              <li>• Compliance monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section>
         <h2 className="font-serif">Domain-Specific Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">

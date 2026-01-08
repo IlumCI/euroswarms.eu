@@ -28,14 +28,9 @@ function Publications() {
               presents the theoretical foundations, architecture, and applications of the CR-CA framework.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a 
-                href="https://arxiv.org/abs/2026.xxxxx" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-yellow-300 hover:text-white font-medium"
-              >
-                arXiv:2026.xxxxx →
-              </a>
+              <Link to="/research" className="btn-primary">
+                Read Technical Paper →
+              </Link>
               <GitHubLink variant="secondary" label="View Repository" />
             </div>
           </div>
@@ -63,14 +58,6 @@ function Publications() {
             A formal framework for structural causality modeling in agentic systems with
             applications to explainable AI and constraint-driven decision processes.
           </p>
-          <a 
-            href="https://arxiv.org/abs/2026.xxxxx" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-accent hover:text-accent-light font-medium"
-          >
-            arXiv:2026.xxxxx →
-          </a>
         </div>
       </section>
 
