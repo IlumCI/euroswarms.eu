@@ -450,12 +450,12 @@ Return ONLY valid JSON, no other text."""`}
           <li className="leading-relaxed">
             <strong>Missing Causal Edges (12% frequency):</strong> The LLM occasionally fails to
             identify indirect causal relationships, particularly in multi-step causal chains.
-            Example: In "Predict sales" tasks, the relationship marketing_spend → brand_awareness → sales
-            may be missed, with only the direct marketing_spend → sales edge extracted.
+            Example: In "Predict sales" tasks, the relationship marketing_spend -&gt; brand_awareness -&gt; sales
+            may be missed, with only the direct marketing_spend -&gt; sales edge extracted.
           </li>
           <li className="leading-relaxed">
             <strong>Spurious Correlations (8% frequency):</strong> The LLM sometimes identifies
-            correlations as causal relationships. Example: In revenue modeling, day_of_week → revenue
+            correlations as causal relationships. Example: In revenue modeling, day_of_week -&gt; revenue
             may be extracted due to weekly patterns, despite lacking true causal mechanism.
           </li>
           <li className="leading-relaxed">
@@ -793,8 +793,8 @@ Return ONLY valid JSON, no other text."""`}
         </MathRenderer>
         <p className="leading-relaxed max-w-4xl mb-4">
           where <MathRenderer>$P$</MathRenderer> is the set of causal paths from interventions to
-          target variables, and <MathRenderer>$c_{ij}$</MathRenderer> is the confidence of edge
-          <MathRenderer>$i \to j$</MathRenderer>.
+          target variables, and <MathRenderer>{'$c_{ij}$'}</MathRenderer> is the confidence of edge
+          <MathRenderer>{'$i \\to j$'}</MathRenderer>.
         </p>
 
         <p className="leading-relaxed max-w-4xl mb-4">
@@ -840,16 +840,16 @@ Return ONLY valid JSON, no other text."""`}
         </p>
         <ul className="space-y-3 max-w-4xl mb-6">
           <li className="leading-relaxed">
-            <strong>Gaussian:</strong> High confidence (<MathRenderer>$c &gt; 0.8$</MathRenderer>) and
-            strong edges (<MathRenderer>$|\beta| &gt; 0.5$</MathRenderer>) → narrow Gaussian around
+            <strong>Gaussian:</strong> High confidence (<MathRenderer>{'$c > 0.8$'}</MathRenderer>) and
+            strong edges (<MathRenderer>{'$|\\beta| > 0.5$'}</MathRenderer>) -&gt; narrow Gaussian around
             factual value
           </li>
           <li className="leading-relaxed">
-            <strong>Uniform:</strong> Low confidence or exogenous variables → wide uniform
+            <strong>Uniform:</strong> Low confidence or exogenous variables -&gt; wide uniform
             distribution
           </li>
           <li className="leading-relaxed">
-            <strong>Mixture:</strong> Multiple parents or long causal paths → mixture of Gaussian
+            <strong>Mixture:</strong> Multiple parents or long causal paths -&gt; mixture of Gaussian
             and uniform components
           </li>
         </ul>
@@ -958,8 +958,8 @@ Return ONLY valid JSON, no other text."""`}
             <strong>Variables:</strong> price, demand, supply, cost, competition
           </li>
           <li className="leading-relaxed">
-            <strong>Causal Edges:</strong> cost → price, demand → price, supply → price,
-            competition → price
+            <strong>Causal Edges:</strong> cost -&gt; price, demand -&gt; price, supply -&gt; price,
+            competition -&gt; price
           </li>
         </ul>
 
