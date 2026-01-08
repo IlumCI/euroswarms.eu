@@ -3,10 +3,19 @@ function About() {
     <>
       <section>
         <h1 className="font-serif">About Euroswarms R&D Division</h1>
+        <p className="text-lg leading-relaxed max-w-4xl mb-6">
+          Euroswarms R&D Division is an independent research organization focused on the systematic 
+          development of agentic reasoning architectures, causal inference frameworks, and constraint-driven 
+          AI systems. Its work is centered on the design of computational structures capable of operating 
+          reliably in complex, high-stakes decision environments where correctness, traceability, and 
+          long-term stability are critical.
+        </p>
         <p className="text-lg leading-relaxed max-w-4xl">
-          Euroswarms R&D Division is an independent research organization dedicated to advancing
-          the frontiers of agentic reasoning architectures, causal modeling, and constraint-driven
-          AI systems for real-world decision processes.
+          The division approaches artificial intelligence as an engineering discipline rather than a 
+          speculative art. Emphasis is placed on formal structure, explicit assumptions, and verifiable 
+          behavior. By integrating causal modeling, constitutional constraints, and agent governance 
+          mechanisms, Euroswarms R&D seeks to advance reasoning systems that are not only capable, but 
+          structurally accountable and resistant to uncontrolled drift.
         </p>
       </section>
 
@@ -15,10 +24,18 @@ function About() {
       <section>
         <h2 className="font-serif">Mission</h2>
         <p className="leading-relaxed max-w-4xl mb-6">
-          Our mission is to develop rigorous, explainable, and deterministic AI systems that enable
-          transparent decision-making in complex environments. We focus on creating frameworks that
-          combine structural causal modeling with modern AI capabilities to produce systems that
-          are both powerful and interpretable.
+          The mission of Euroswarms R&D Division is to develop rigorous, explainable, and deterministic 
+          reasoning systems that enable transparent and auditable decision-making in complex environments. 
+          The organization prioritizes architectures in which every decision can be traced to explicit 
+          causes, constraints, and objectives, ensuring that system behavior remains intelligible to both 
+          developers and operators.
+        </p>
+        <p className="leading-relaxed max-w-4xl">
+          To achieve this, Euroswarms R&D focuses on unifying structural causal modeling with modern AI 
+          techniques, producing frameworks that combine expressive power with strict interpretability 
+          guarantees. The objective is not maximal autonomy or creativity, but controlled reasoning under 
+          constraint—systems that act decisively while remaining corrigible, verifiable, and aligned with 
+          their declared purpose over extended deployment horizons.
         </p>
       </section>
 
