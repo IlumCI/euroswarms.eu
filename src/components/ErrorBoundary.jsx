@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
           <p className="text-muted mb-4">
             An error occurred while loading this page. Please try refreshing the page.
           </p>
-          {this.state.error && (
+          {process.env.NODE_ENV === 'development' && this.state.error && (
             <details className="mt-4">
               <summary className="cursor-pointer text-sm text-muted mb-2">Error details</summary>
               <pre className="text-xs bg-bg p-4 rounded overflow-auto border">
