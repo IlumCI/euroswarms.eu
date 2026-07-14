@@ -139,8 +139,19 @@ html[data-motion="off"] .x-blink { animation: none; }
   content: ""; position: absolute; left: 0; right: 0; bottom: 0;
   border-top: 2px solid var(--x-signal);
 }
+/* Oversized emblem, compact bar. The anchor is fixed at 76px so the mark's
+   138px doesn't set the flex row height and inflate the whole bar; the rest
+   of the mark overhangs the bottom rule like a seal (nav is z-index 5, so
+   the overhang paints over the page head, whose top padding clears it). */
+.x-nav-logo { display: block; flex: none; height: 76px; border-bottom: none; }
+.x-nav-logo img { display: block; height: 138px; width: auto; }
+/* The mark's wordmark is white — on archive bone it sits on a dark plate. */
+html[data-theme="archive"] .x-nav-logo img { background: #0f0f10; }
 @media (max-width: 1000px) {
   .x-nav-inner { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1rem 1.25rem; }
+  /* Column layout stacks the links under the logo — no room to overhang. */
+  .x-nav-logo { height: auto; }
+  .x-nav-logo img { height: 92px; }
 }
 
 /* ── Sigil ── */

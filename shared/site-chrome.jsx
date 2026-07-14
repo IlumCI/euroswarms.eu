@@ -170,8 +170,8 @@ function SiteNav({ current }) {
   return (
     <header className="x-nav">
       <div className="x-nav-inner">
-        <a href="index.html" style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', flex: 'none' }}>
-          <img src="assets/full-nobg.png" alt="Euroswarms" style={{ height: '138px', width: 'auto', display: 'block' }} />
+        <a href="index.html" className="x-nav-logo">
+          <img src="assets/full-nobg.png" alt="Euroswarms" />
         </a>
         <nav className="x-nav-links">
           {ES_NAV.map(([label, href]) => (
@@ -257,7 +257,8 @@ function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
 function PageHead({ n, latin, refCode, title, lede }) {
   return (
     <div style={{ borderBottom: '1px solid var(--x-line)' }}>
-      <div className="x-wrap" style={{ padding: '3.25rem 3rem 2.75rem', position: 'relative' }}>
+      {/* Top padding also clears the nav emblem's 46px overhang — see .x-nav-logo. */}
+      <div className="x-wrap" style={{ padding: '4rem 3rem 2.75rem', position: 'relative' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1.1rem' }}>
           <span className="x-mono" style={{ color: 'var(--x-signal)' }}>{n}</span>
           <span className="x-mono">{latin}</span>
