@@ -19,8 +19,7 @@
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "void",
   "motion": true,
-  "counter": true,
-  "crosshair": true
+  "counter": true
 }/*EDITMODE-END*/;
 
 // Full portfolio — kept in step with the Active Programmes grid on index.html.
@@ -74,10 +73,10 @@ function ResearchPage() {
         <section data-screen-label="Flagship detail" style={{ marginBottom: '4.5rem' }}>
           <Sec n="II·I" latin="Opera prima" title="Flagship Research" />
           <div className="x-grid2">
-            <a className="x-panel blue" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
+            <a className="x-panel primary" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
               <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
                 <span><span className="au">Phase 1</span></span>
-                <span style={{ opacity: 0.7 }}>ES/RD/2024/002</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2024/002</span>
               </span>
               <h3 style={{ fontSize: '1.5rem' }}>MetaModel</h3>
               <p style={{ marginBottom: '1.1rem' }}>
@@ -88,12 +87,12 @@ function ResearchPage() {
                 <li>TaskAdapter low-rank bottleneck (LoRA-style, at inference)</li>
                 <li>Autonomous SelfCritic loop</li>
               </ul>
-              <span className="x-status" style={{ color: '#fff' }}>github.com/IlumCI/Metamodel →</span>
+              <span className="x-status">github.com/IlumCI/Metamodel →</span>
             </a>
-            <a className="x-panel blue" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
+            <a className="x-panel primary" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
               <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
                 <span><span className="au">v0.2.0</span></span>
-                <span style={{ opacity: 0.7 }}>ES/RD/2024/003</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2024/003</span>
               </span>
               <h3 style={{ fontSize: '1.5rem' }}>Stable Cognition</h3>
               <p style={{ marginBottom: '1.1rem' }}>
@@ -104,7 +103,7 @@ function ResearchPage() {
                 <li>Auto-scaling to 1B+ agents</li>
                 <li>Multi-GPU, local and cloud</li>
               </ul>
-              <span className="x-status" style={{ color: '#fff' }}>github.com/Euroswarms-Institute/Stable-Cognition →</span>
+              <span className="x-status">github.com/Euroswarms-Institute/Stable-Cognition →</span>
             </a>
           </div>
         </section>

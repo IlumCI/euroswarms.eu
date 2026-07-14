@@ -11,7 +11,7 @@
  * component renders its resolved end state immediately — never a blank.
  *
  * Exports (to window): RBMotion, useRBMotion, DecryptedText, CountUp,
- *   Crosshair, SurveyGrid, Reveal.
+ *   SurveyGrid, Reveal.
  */
 
 const RBMotion = React.createContext(true);
@@ -132,46 +132,6 @@ function CountUp({ to, duration = 1700, pad = 0, className, style, as: Tag = 'sp
   return <Tag ref={ref} className={className} style={style}>{render ? render(s) : s}</Tag>;
 }
 
-/* ── Crosshair ────────────────────────────────────────────────────────────────
- * Full-viewport reticle tracking the pointer. Writes transforms straight to the
- * DOM inside the rAF — routing pointermove through setState would re-render the
- * page tree on every mouse event. CSS hides it on coarse pointers. */
-
-function Crosshair({ enabled = true }) {
-  const motion = useRBMotion();
-  const on = enabled && motion;
-  const hRef = React.useRef(null), vRef = React.useRef(null), bRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (!on) return;
-    let raf = 0, x = -99, y = -99;
-    const paint = () => {
-      raf = 0;
-      if (hRef.current) hRef.current.style.transform = 'translateY(' + y + 'px)';
-      if (vRef.current) vRef.current.style.transform = 'translateX(' + x + 'px)';
-      if (bRef.current) bRef.current.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-    };
-    const onMove = (e) => {
-      x = e.clientX; y = e.clientY;
-      if (!raf) raf = requestAnimationFrame(paint);
-    };
-    window.addEventListener('pointermove', onMove, { passive: true });
-    return () => {
-      window.removeEventListener('pointermove', onMove);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [on]);
-
-  if (!on) return null;
-  return (
-    <div className="x-crosshair on" aria-hidden="true">
-      <div className="ln h" ref={hRef} />
-      <div className="ln v" ref={vRef} />
-      <div className="box" ref={bRef} />
-    </div>
-  );
-}
-
 /* ── SurveyGrid ───────────────────────────────────────────────────────────────
  * React Bits "Squares": a ruled plan-view grid drifting on the diagonal.
  * Canvas rather than a tiled background-image so the drift stays sub-pixel and
@@ -261,5 +221,5 @@ function Reveal({ children, delay = 0, as: Tag = 'div', className, style, ...res
 }
 
 Object.assign(window, {
-  RBMotion, useRBMotion, DecryptedText, CountUp, Crosshair, SurveyGrid, Reveal,
+  RBMotion, useRBMotion, DecryptedText, CountUp, SurveyGrid, Reveal,
 });

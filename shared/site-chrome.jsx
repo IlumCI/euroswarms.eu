@@ -39,9 +39,13 @@ function useSiteTweaks(defaults) {
 function Blink() { return <span className="x-blink" aria-hidden="true">█</span>; }
 
 /* ── Union Sigil — 12 stars, bearing scale, centre mark ──
-   Twelve stars for the Union; the 72-tick ring reads as a bearing scale rather
-   than a seal. Stars in bone, ticks in line, cardinals and centre in signal. */
-function Sigil({ size = 520, spin = true, opacity = 1 }) {
+   Twelve stars for the Union, in EU flag gold; the 72-tick ring reads as a
+   bearing scale rather than a seal. Ticks in line, cardinals and centre in
+   signal. The gold is emblem, not accent — it appears nowhere else. */
+/* scaleOpacity and starOpacity are separate on purpose: the hero needs the
+   bearing scale to recede behind the headline while the stars stay properly
+   gold. One opacity over the whole mark drags #ffcc00 to olive. */
+function Sigil({ size = 520, spin = true, scaleOpacity = 1, starOpacity = 1 }) {
   const s = size, c = s / 2;
   const star = (cx, cy, r) => {
     let d = '';
@@ -65,24 +69,28 @@ function Sigil({ size = 520, spin = true, opacity = 1 }) {
     ticks.push([c + r1 * Math.sin(a), c - r1 * Math.cos(a), c + r2 * Math.sin(a), c - r2 * Math.cos(a), major]);
   }
   return (
-    <svg width={s} height={s} viewBox={'0 0 ' + s + ' ' + s} style={{ display: 'block', opacity }} aria-hidden="true">
+    <svg width={s} height={s} viewBox={'0 0 ' + s + ' ' + s} style={{ display: 'block' }} aria-hidden="true">
       <g className={spin ? 'x-sigil-spin' : ''}>
-        <circle cx={c} cy={c} r={s * 0.46} fill="none" stroke="var(--x-line)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.44} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.36} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.24} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.10} fill="none" stroke="var(--x-signal-dim)" strokeWidth="1" />
-        {ticks.map((t2, i) => (
-          <line key={i} x1={t2[0]} y1={t2[1]} x2={t2[2]} y2={t2[3]}
-            stroke={t2[4] ? 'var(--x-signal-dim)' : 'var(--x-line)'} strokeWidth="1" />
-        ))}
-        {[0, 1, 2, 3, 4, 5].map((i) => {
-          const a = (i * Math.PI) / 6, r = s * 0.36;
-          return <line key={i} x1={c - r * Math.sin(a)} y1={c + r * Math.cos(a)} x2={c + r * Math.sin(a)} y2={c - r * Math.cos(a)} stroke="var(--x-line-soft)" strokeWidth="1" />;
-        })}
-        {stars.map((d, i) => <path key={i} d={d} fill="var(--x-fg)" />)}
+        <g opacity={scaleOpacity}>
+          <circle cx={c} cy={c} r={s * 0.46} fill="none" stroke="var(--x-line)" strokeWidth="1" />
+          <circle cx={c} cy={c} r={s * 0.44} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+          <circle cx={c} cy={c} r={s * 0.36} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+          <circle cx={c} cy={c} r={s * 0.24} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+          <circle cx={c} cy={c} r={s * 0.10} fill="none" stroke="var(--x-signal-dim)" strokeWidth="1" />
+          {ticks.map((t2, i) => (
+            <line key={i} x1={t2[0]} y1={t2[1]} x2={t2[2]} y2={t2[3]}
+              stroke={t2[4] ? 'var(--x-signal-dim)' : 'var(--x-line)'} strokeWidth="1" />
+          ))}
+          {[0, 1, 2, 3, 4, 5].map((i) => {
+            const a = (i * Math.PI) / 6, r = s * 0.36;
+            return <line key={i} x1={c - r * Math.sin(a)} y1={c + r * Math.cos(a)} x2={c + r * Math.sin(a)} y2={c - r * Math.cos(a)} stroke="var(--x-line-soft)" strokeWidth="1" />;
+          })}
+        </g>
+        <g opacity={starOpacity}>
+          {stars.map((d, i) => <path key={i} d={d} fill="var(--x-eu-gold)" />)}
+        </g>
       </g>
-      <circle cx={c} cy={c} r={s * 0.014} fill="var(--x-signal)" />
+      <circle cx={c} cy={c} r={s * 0.014} fill="var(--x-signal)" opacity={scaleOpacity} />
     </svg>
   );
 }
@@ -163,7 +171,7 @@ function SiteNav({ current }) {
     <header className="x-nav">
       <div className="x-nav-inner">
         <a href="index.html" style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', flex: 'none' }}>
-          <img src="assets/full-nobg.png" alt="Euroswarms" style={{ height: '76px', width: 'auto', display: 'block' }} />
+          <img src="assets/full-nobg.png" alt="Euroswarms" style={{ height: '138px', width: 'auto', display: 'block' }} />
         </a>
         <nav className="x-nav-links">
           {ES_NAV.map(([label, href]) => (
@@ -228,7 +236,6 @@ function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
   return (
     <RBMotion.Provider value={!!t.motion}>
       <div className="x-frame" aria-hidden="true"><i /><i /><i /><i /></div>
-      <Crosshair enabled={t.crosshair !== false} />
       <DocBand docRef={docRef} />
       <SiteNav current={current} />
       <main>{children}</main>
@@ -238,7 +245,6 @@ function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
         <TweakRadio label="Theme" value={t.theme} options={['void', 'archive']} onChange={(v) => setTweak('theme', v)} />
         <TweakSection label="Apparatus" />
         <TweakToggle label="Motion" value={t.motion} onChange={(v) => setTweak('motion', v)} />
-        <TweakToggle label="Crosshair" value={t.crosshair !== false} onChange={(v) => setTweak('crosshair', v)} />
         <TweakToggle label="Access counter" value={t.counter} onChange={(v) => setTweak('counter', v)} />
         {extraTweaks}
       </TweaksPanel>

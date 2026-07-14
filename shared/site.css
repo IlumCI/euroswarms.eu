@@ -16,7 +16,10 @@
   --x-signal-dim: #7e1512;
   --x-blue: #2a5bd7;
   --x-blue-deep: #003399;
-  --x-on-blue: #b9c8ee;
+  /* EU flag gold (Pantone Yellow). Emblem only — the twelve stars of the
+     sigil. Never an accent, never a border, never type. The signal red is
+     the only functional colour. */
+  --x-eu-gold: #ffcc00;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", Consolas, monospace;
@@ -34,7 +37,8 @@ html[data-theme="archive"] {
   --x-signal-dim: #8a1512;
   --x-blue: #003399;
   --x-blue-deep: #002b80;
-  --x-on-blue: #c9d6f2;
+  /* Flag gold is near-invisible on bone; darkened to hold the stars. */
+  --x-eu-gold: #a07c00;
 }
 
 * { box-sizing: border-box; }
@@ -189,17 +193,19 @@ a.x-panel { display: block; color: inherit; border-bottom: 1px solid var(--x-lin
 a.x-panel:hover { color: inherit; }
 .x-panel .x-mono { display: block; margin-bottom: 0.85rem; }
 
-/* Union blue — reserved for flagship programmes */
-.x-panel.blue { background: var(--x-blue-deep); border-color: #0a2a70; }
-.x-panel.blue::before { border-top-color: #23459b; border-right-color: #23459b; }
-.x-panel.blue h3 { color: #fff; }
-.x-panel.blue p { color: var(--x-on-blue); }
-.x-panel.blue:hover { background: #00297a; border-color: var(--x-signal); }
-.x-panel.blue:hover::before { border-top-color: var(--x-signal); border-right-color: var(--x-signal); }
-.x-panel.blue .x-mono { color: var(--x-on-blue); }
-.x-panel.blue .x-mono .au { color: #fff; }
-.x-panel.blue ul.x-list li { color: var(--x-on-blue); }
-.x-panel.blue ul.x-list li::before { background: #fff; }
+/* Flagship plate — reserved for flagship programmes and primary channels.
+   Rank is carried by the edge, not a colour fill: raised surface, a signal
+   stripe down the left, and the corner index tick live by default rather
+   than on hover.
+   The stripe is ::after rather than border-left because a flush grid resets
+   its children to border:none — any border set here would be dropped. */
+.x-panel.primary { background: var(--x-panel-2); border-color: var(--x-signal-dim); }
+.x-panel.primary::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px;
+  background: var(--x-signal); pointer-events: none;
+}
+.x-panel.primary::before { border-top-color: var(--x-signal); border-right-color: var(--x-signal); }
+.x-panel.primary:hover { background: var(--x-panel-2); border-color: var(--x-signal); }
 
 /* ── Grids ──
    Default: cells butt against shared hairlines — a register, not floating
@@ -285,7 +291,7 @@ ul.x-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; wid
 }
 .x-hero h1 em { font-style: normal; color: var(--x-signal); }
 .x-hero .lede { font-size: 1.05rem; line-height: 1.7; max-width: 40rem; margin: 0 auto; }
-.x-hero-sigil { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.22; pointer-events: none; }
+.x-hero-sigil { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
 .x-hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.5; }
 
 /* ── Marginalia ── */
@@ -306,17 +312,6 @@ ul.x-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; wid
 
 /* ── Footer ── */
 .x-footer { border-top: 1px solid var(--x-line); margin-top: 5rem; background: var(--x-panel); position: relative; z-index: 5; }
-
-/* ── Crosshair (React Bits) — fine pointers only ── */
-.x-crosshair { position: fixed; inset: 0; pointer-events: none; z-index: 55; display: none; }
-@media (pointer: fine) { .x-crosshair.on { display: block; } }
-.x-crosshair .ln { position: absolute; background: var(--x-signal); opacity: 0.16; }
-.x-crosshair .ln.h { left: 0; right: 0; height: 1px; }
-.x-crosshair .ln.v { top: 0; bottom: 0; width: 1px; }
-.x-crosshair .box {
-  position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px;
-  border: 1px solid var(--x-signal); opacity: 0.5;
-}
 
 /* ── Reveal (React Bits) ── */
 .rb-reveal { opacity: 0; transform: translateY(8px); }

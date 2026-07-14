@@ -19,8 +19,7 @@
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "void",
   "motion": true,
-  "counter": true,
-  "crosshair": true
+  "counter": true
 }/*EDITMODE-END*/;
 
 const MANDATE = [
@@ -43,7 +42,7 @@ function Hero({ t }) {
   return (
     <section className="x-hero" data-screen-label="Hero">
       <div className="x-hero-grid"><SurveyGrid cell={46} /></div>
-      <div className="x-hero-sigil"><Sigil size={720} spin={t.motion} /></div>
+      <div className="x-hero-sigil"><Sigil size={720} spin={t.motion} scaleOpacity={0.22} starOpacity={0.78} /></div>
       <div className="x-wrap" style={{ position: 'relative', zIndex: 1, padding: '6.5rem 3rem 6rem' }}>
         <span className="x-mono" style={{ display: 'block', marginBottom: '1.75rem' }}>
           <span className="au">Euroswarms</span> · Institute for Collective Intelligence Research
@@ -103,27 +102,27 @@ function HomePage() {
         <section data-screen-label="II Opera" style={{ marginBottom: '4.5rem' }}>
           <Sec n="II" latin="Opera" title="Flagship Programmes" />
           <div className="x-grid2">
-            <a className="x-panel blue" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
+            <a className="x-panel primary" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
               <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
                 <span><span className="au">Phase 1</span></span>
-                <span style={{ opacity: 0.7 }}>ES/RD/2024/002</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2024/002</span>
               </span>
               <h3 style={{ fontSize: '1.5rem' }}>MetaModel</h3>
               <p style={{ marginBottom: '1.1rem' }}>
                 A single model that reconfigures its own weights per task: an LSTM hypernetwork reads a task description and generates low-rank weight deltas over a frozen base transformer, with an autonomous self-critic loop that detects proxy shortcuts. In the latest probe the hypernetwork is grafted onto a pretrained Qwen3-0.6B — conditioning on behavioral specifications lifts held-out zero-shot accuracy from 0% to 77%.
               </p>
-              <span className="x-status" style={{ color: '#fff' }}>github.com/IlumCI/Metamodel →</span>
+              <span className="x-status">github.com/IlumCI/Metamodel →</span>
             </a>
-            <a className="x-panel blue" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
+            <a className="x-panel primary" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
               <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
                 <span><span className="au">v0.2.0</span></span>
-                <span style={{ opacity: 0.7 }}>ES/RD/2024/003</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2024/003</span>
               </span>
               <h3 style={{ fontSize: '1.5rem' }}>Stable Cognition</h3>
               <p style={{ marginBottom: '1.1rem' }}>
                 Globular Reasoning Architecture — inspired by globular clusters, it evolves populations of latent hypothesis-agents through attention-like field dynamics, and integrates into any transformer. Agent-field auto-scaling is verified past 1B agents; a hypernetwork upgrade of the field is in active research.
               </p>
-              <span className="x-status" style={{ color: '#fff' }}>github.com/Euroswarms-Institute/Stable-Cognition →</span>
+              <span className="x-status">github.com/Euroswarms-Institute/Stable-Cognition →</span>
             </a>
           </div>
         </section>

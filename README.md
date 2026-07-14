@@ -28,8 +28,9 @@ document-control band stating its own reference and revision.
 
 Rules enforced throughout `site.css`: **no gradients, no backdrop-filter, no
 border-radius, no box-shadow.** Colour is a signal, never an ornament — signal
-red (`--x-signal`) marks status, live links, and active state only; Union blue
-(`--x-blue-deep`) is reserved for flagship programmes. Display type is Archivo
+red (`--x-signal`) marks status, live links, active state, and the flagship
+stripe only. EU flag gold (`--x-eu-gold`) is emblem-only — the twelve stars of
+the sigil, nowhere else. Flagship rank is carried by an edge, never a fill. Display type is Archivo
 (grotesque), data is JetBrains Mono. The v2 serif and gold accent were retired as
 warm/ecclesiastical and off-register.
 
@@ -38,9 +39,9 @@ Both are authored — archive is a cold bone, not a tinted dark theme.
 
 ### React Bits
 
-`shared/reactbits.jsx` adapts five components from [reactbits.dev]: `DecryptedText`,
-`CountUp`, `Crosshair`, `SurveyGrid` (upstream "Squares"), and `Reveal`
-(upstream "ScrollReveal", minus the blur). They are reimplemented against plain
+`shared/reactbits.jsx` adapts four components from [reactbits.dev]: `DecryptedText`,
+`CountUp`, `SurveyGrid` (upstream "Squares"), and `Reveal` (upstream
+"ScrollReveal", minus the blur). They are reimplemented against plain
 hooks + rAF + IntersectionObserver rather than vendored: the upstream versions
 assume a bundler and pull in GSAP or framer-motion, and this site has neither —
 its CDN payload is three SRI-pinned scripts. None of the five need a motion library.

@@ -19,8 +19,7 @@
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "void",
   "motion": true,
-  "counter": true,
-  "crosshair": true
+  "counter": true
 }/*EDITMODE-END*/;
 
 const POSITIONS = [
@@ -88,13 +87,13 @@ function VolunteerPage() {
         <GlyphRule label="Procedure" />
 
         <section data-screen-label="Apply" style={{ marginBottom: '4.5rem' }}>
-          <div className="x-panel blue" style={{ padding: '2.75rem', maxWidth: '58rem' }}>
+          <div className="x-panel primary" style={{ padding: '2.75rem', maxWidth: '58rem' }}>
             <span className="x-mono"><span className="au">Application procedure</span></span>
             <h3 style={{ fontSize: '1.5rem' }}>Submit by correspondence.</h3>
             <p style={{ marginBottom: '1.5rem' }}>
               Write to the division citing the appointment reference number, with a short account of relevant work — repositories, papers, or artifacts. There is no form. Every complete application receives a reply.
             </p>
-            <a href="mailto:research@euroswarms.eu" className="x-status" style={{ color: '#fff' }}>research@euroswarms.eu →</a>
+            <a href="mailto:research@euroswarms.eu" className="x-status">research@euroswarms.eu →</a>
           </div>
         </section>
       </div>
