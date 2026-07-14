@@ -257,8 +257,7 @@ function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
 function PageHead({ n, latin, refCode, title, lede }) {
   return (
     <div style={{ borderBottom: '1px solid var(--x-line)' }}>
-      {/* Top padding also clears the nav emblem's 46px overhang — see .x-nav-logo. */}
-      <div className="x-wrap" style={{ padding: '4rem 3rem 2.75rem', position: 'relative' }}>
+      <div className="x-wrap" style={{ padding: '3.25rem 3rem 2.75rem', position: 'relative' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1.1rem' }}>
           <span className="x-mono" style={{ color: 'var(--x-signal)' }}>{n}</span>
           <span className="x-mono">{latin}</span>

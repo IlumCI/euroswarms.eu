@@ -108,7 +108,9 @@ html[data-motion="off"] .x-blink { animation: none; }
   position: relative; z-index: 6;
 }
 .x-docband-inner {
-  max-width: 1360px; margin: 0 auto; padding: 0.55rem 3rem;
+  /* Left padding reserves the emblem column: the nav mark is centered across
+     both header bands (see .x-nav-logo) and overlaps the band at this edge. */
+  max-width: 1360px; margin: 0 auto; padding: 0.55rem 3rem 0.55rem calc(3rem + 158px);
   display: flex; align-items: center; gap: 1.25rem;
   font-family: var(--font-mono); font-size: 0.58rem; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--x-faint);
@@ -116,13 +118,20 @@ html[data-motion="off"] .x-blink { animation: none; }
 }
 .x-docband-inner b { color: var(--x-muted); font-weight: 600; }
 .x-docband-inner .rule { flex: 1; border-top: 1px solid var(--x-line-soft); min-width: 1rem; }
+@media (max-width: 1000px) {
+  /* Nav goes column below 1000px — the mark is in-flow, no emblem column. */
+  .x-docband-inner { padding-left: 3rem; }
+}
 @media (max-width: 900px) {
   .x-docband-inner { padding: 0.5rem 1.25rem; gap: 0.75rem; font-size: 0.52rem; letter-spacing: 0.14em; }
   .x-docband-inner .hide-sm { display: none; }
 }
 
-/* ── Nav — administrative bar, left-anchored ── */
-.x-nav { border-bottom: 1px solid var(--x-line); background: var(--x-bg); position: relative; z-index: 5; }
+/* ── Nav — administrative bar, left-anchored ──
+   z-index sits ABOVE the docband (6): the emblem overflows the nav upward
+   across the band, and the nav's stacking context caps its children, so the
+   nav itself must outrank the band or the mark's top gets clipped. */
+.x-nav { border-bottom: 1px solid var(--x-line); background: var(--x-bg); position: relative; z-index: 7; }
 .x-nav-inner {
   max-width: 1360px; margin: 0 auto; padding: 1rem 3rem;
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
@@ -140,18 +149,21 @@ html[data-motion="off"] .x-blink { animation: none; }
   border-top: 2px solid var(--x-signal);
 }
 /* Oversized emblem, compact bar. The anchor is fixed at 76px so the mark's
-   138px doesn't set the flex row height and inflate the whole bar; the rest
-   of the mark overhangs the bottom rule like a seal (nav is z-index 5, so
-   the overhang paints over the page head, whose top padding clears it). */
+   138px doesn't set the flex row height and inflate the whole bar. The
+   negative margin centers the mark vertically on the COMBINED header —
+   docband (~31px) + nav (~109px) ≈ 140px, mark 138px — so it spans both
+   bands like a letterhead seal instead of dangling below the bottom rule.
+   The docband reserves its left padding for this column, and .x-nav's
+   z-index keeps the overlap unclipped. */
 .x-nav-logo { display: block; flex: none; height: 76px; border-bottom: none; }
-.x-nav-logo img { display: block; height: 138px; width: auto; }
+.x-nav-logo img { display: block; height: 138px; width: auto; margin-top: -46px; }
 /* The mark's wordmark is white — on archive bone it sits on a dark plate. */
 html[data-theme="archive"] .x-nav-logo img { background: #0f0f10; }
 @media (max-width: 1000px) {
   .x-nav-inner { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1rem 1.25rem; }
-  /* Column layout stacks the links under the logo — no room to overhang. */
+  /* Column layout stacks the links under the logo — mark goes in-flow. */
   .x-nav-logo { height: auto; }
-  .x-nav-logo img { height: 92px; }
+  .x-nav-logo img { height: 92px; margin-top: 0; }
 }
 
 /* ── Sigil ── */
