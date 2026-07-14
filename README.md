@@ -59,5 +59,14 @@ Two constraints worth knowing before editing:
 - Don't put `Reveal` on a panel inside a flush grid, for the same reason: it starts
   at `opacity: 0` and the grid background shows through. `Reveal` is for table rows.
 
+## Releasing
+
+GitHub Pages fronts this site with a CDN that caches HTML for ~10 minutes but
+shared assets for up to 4 hours. Pages therefore reference `shared/*` and the
+token CSS with a version query (`?v=6`): **when you change any file under
+`shared/` or `_ds/`, bump the `?v=` number in all seven HTML files** so the
+new HTML pulls matching assets. Without the bump, the edge serves new HTML
+with stale CSS/JSX for hours — this exact skew shipped a broken nav once.
+
 > Note: this branch is a different architecture from `main` (a Vite/Tailwind app);
 > it is committed as an orphan branch so the two do not share history.
