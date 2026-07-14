@@ -1,0 +1,31 @@
+/* Euroswarms — Typography tokens */
+:root {
+  --font-serif: "Crimson Text", Georgia, "Times New Roman", serif;   /* headings */
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;          /* body */
+  --font-mono: "JetBrains Mono", Consolas, monospace;                 /* meta, status, code */
+
+  --text-display: 4rem;      /* lh 1.1, ls -0.03em */
+  --text-hero: 3.5rem;       /* lh 1.2, ls -0.02em */
+  --text-h1: 3rem;
+  --text-h2: 1.875rem;
+  --text-h3: 1.5rem;
+  --text-body-lg: 1.125rem;  /* default paragraph size */
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-meta: 0.8rem;
+  --text-status: 0.75rem;
+
+  --leading-tight: 1.1;
+  --leading-heading: 1.2;
+  --leading-body: 1.625;
+
+  --tracking-heading: -0.02em;
+  --tracking-display: -0.03em;
+  --tracking-caps: 0.1em;    /* uppercase mono labels */
+
+  --weight-heading: 400;     /* serif headings are NOT bold */
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --measure: 75ch;           /* paragraph max width */
+}

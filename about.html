@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="void">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Euroswarms</title>
+<link rel="stylesheet" href="_ds/euroswarms-design-system-695957dd-4d70-4192-a06e-943ee951a25f/tokens/fonts.css">
+<link rel="stylesheet" href="shared/site.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/site-chrome.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "void",
+  "motion": true,
+  "counter": true
+}/*EDITMODE-END*/;
+
+const PHILOSOPHY = [
+  ['', 'Rigorous Methodology', 'We employ formal methods and structural causal models to ensure our frameworks are mathematically sound and theoretically grounded.'],
+  ['', 'Explainability First', 'Every system we develop prioritizes transparency and interpretability, enabling users to understand not just what decisions are made, but why.'],
+  ['', 'Open Research', 'We believe in open science and make our research, code, and frameworks publicly available to advance the field collectively.'],
+  ['', 'Practical Impact', 'Our research is driven by real-world applications, ensuring that theoretical advances translate into practical tools and systems.'],
+];
+
+function AboutPage() {
+  const [t, setTweak] = useSiteTweaks(TWEAK_DEFAULTS);
+  return (
+    <SiteFrame current="about.html" t={t} setTweak={setTweak}>
+      <PageHead n="I" latin="Doctrina" refCode="ES/RD/2026/030" title="About the Institute"
+        lede="Euroswarms Institute for Collective Intelligence Research is an independent research organization dedicated to advancing the frontiers of agentic reasoning architectures, causal modeling, and constraint-driven AI systems for real-world decision processes." />
+
+      <div className="x-wrap" style={{ paddingTop: '3.5rem' }}>
+        <section data-screen-label="Mission" style={{ marginBottom: '5rem' }}>
+          <div className="x-grid2" style={{ alignItems: 'start', gap: '3rem' }}>
+            <div>
+              <Sec n="I·I" latin="Missio" title="Mission" />
+              <p style={{ fontSize: '1.1rem' }}>
+                Our mission is to make machine reasoning legible. We hold that a decision system whose conclusions cannot be traced, interrogated, and reproduced has no place in consequential decision processes — and we build architectures accordingly.
+              </p>
+              <p style={{ fontSize: '1.1rem' }}>
+                The Institute operates without commercial sponsorship of its research agenda. Findings, code, model weights, and datasets are deposited in public registries as a condition of every programme.
+              </p>
+            </div>
+            <table className="x-record">
+              <caption>Registry entry — ES/RD/0001</caption>
+              <tbody>
+                <tr><th>Designation</th><td>Euroswarms Institute for Collective Intelligence Research</td></tr>
+                <tr><th>Operating unit</th><td>Euroswarms R&amp;D Division</td></tr>
+                <tr><th>Character</th><td>Independent European research organization</td></tr>
+                <tr><th>Flagships</th><td>MetaModel · Stable Cognition</td></tr>
+                <tr><th>Registries</th><td>github.com/IlumCI · huggingface.co/Euroswarms</td></tr>
+                <tr><th>Status</th><td><span className="x-status">Active</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <GlyphRule />
+
+        <section data-screen-label="Philosophy" style={{ marginBottom: '5rem' }}>
+          <Sec n="I·II" latin="Philosophia" title="Research Philosophy" />
+          <div className="x-grid2">
+            {PHILOSOPHY.map(([_x, title, body]) => (
+              <div className="x-panel" key={title}>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section data-screen-label="Working method" style={{ marginBottom: '5rem' }}>
+          <Sec n="I·III" latin="Modus operandi" title="Working Method" />
+          <ul className="x-list" style={{ maxWidth: '48rem' }}>
+            <li>Programmes are chartered with a written mandate and a numbered reference before work begins.</li>
+            <li>Claims are backed by structural causal models, counterfactual tests, or formal argument — not benchmarks alone.</li>
+            <li>Every release is reproducible from public artifacts: weights, datasets, and training procedure.</li>
+            <li>Contributors serve in volunteer appointments; authorship follows contribution, not seniority. <a href="volunteer.html">Appointments →</a></li>
+          </ul>
+        </section>
+      </div>
+    </SiteFrame>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<AboutPage />);
+</script>
+</body>
+</html>
