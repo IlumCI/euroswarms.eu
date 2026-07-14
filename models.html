@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="void">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Registry — Euroswarms</title>
+<link rel="stylesheet" href="_ds/euroswarms-design-system-695957dd-4d70-4192-a06e-943ee951a25f/tokens/fonts.css">
+<link rel="stylesheet" href="shared/site.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/reactbits.jsx"></script>
+<script type="text/babel" src="shared/site-chrome.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "void",
+  "motion": true,
+  "counter": true,
+  "crosshair": true
+}/*EDITMODE-END*/;
+
+const MODELS = [
+  ['Euroswarms/AtomCoder', '2B', 'Code generation', 'https://huggingface.co/Euroswarms/AtomCoder'],
+  ['Euroswarms/Stable-Atomic', '2B', 'Reasoning', 'https://huggingface.co/Euroswarms/Stable-Atomic'],
+  ['Euroswarms/CR-CA', '2B', 'Text generation · causal reasoning', 'https://huggingface.co/Euroswarms/CR-CA'],
+];
+
+const TOTALS = [
+  [3, 'Model deposits'],
+  [6, 'Dataset deposits'],
+  [0, 'Gated releases'],
+];
+
+function ModelsPage() {
+  const [t, setTweak] = useSiteTweaks(TWEAK_DEFAULTS);
+  return (
+    <SiteFrame current="models.html" docRef="ES/RD/2026/020" t={t} setTweak={setTweak}>
+      <PageHead n="III" latin="Archivum" refCode="ES/RD/2026/020" title="Registry of Public Releases"
+        lede="All model weights and datasets produced under the Institute's mandate are deposited in the open registry at huggingface.co/Euroswarms. No release is gated; no licence requires correspondence." />
+
+      <div className="x-wrap" style={{ paddingTop: '3rem' }}>
+        <section data-screen-label="Totals" style={{ marginBottom: '4rem' }}>
+          <div className="x-grid3">
+            {TOTALS.map(([n, label]) => (
+              <div className="x-panel" key={label} style={{ padding: '1.5rem 1.75rem' }}>
+                <CountUp to={n} duration={1200} style={{ display: 'block', fontFamily: 'var(--font-display)', fontSize: '2.6rem', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.04em', color: 'var(--x-signal)', marginBottom: '0.5rem' }} />
+                <span className="x-mono" style={{ display: 'block', margin: 0 }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section data-screen-label="Model registry" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="III·I" latin="Pondera" title="Model Releases" />
+          <div className="x-scroll">
+            <table className="x-table">
+              <caption>Weights registry — huggingface.co/Euroswarms</caption>
+              <thead>
+                <tr><th>Identifier</th><th>Parameters</th><th>Task</th><th>Access</th></tr>
+              </thead>
+              <tbody>
+                {MODELS.map(([id, params, task, url], i) => (
+                  <Reveal as="tr" key={id} delay={i * 45}>
+                    <td className="mono" style={{ color: 'var(--x-fg)' }}>{id}</td>
+                    <td className="mono">{params}</td>
+                    <td style={{ color: 'var(--x-muted)' }}>{task}</td>
+                    <td><a href={url} target="_blank">Registry entry →</a></td>
+                  </Reveal>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section data-screen-label="Dataset registry" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="III·II" latin="Corpora" title="Dataset Releases" />
+          <div className="x-scroll">
+            <table className="x-table">
+              <caption>Dataset registry — six public deposits</caption>
+              <thead>
+                <tr><th>Identifier</th><th>Subject</th><th>Access</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/CommandNet</td>
+                  <td style={{ color: 'var(--x-muted)' }}>Structured command-and-execution traces</td>
+                  <td><a href="https://huggingface.co/Euroswarms" target="_blank">Registry entry →</a></td>
+                </tr>
+                <tr>
+                  <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/bash</td>
+                  <td style={{ color: 'var(--x-muted)' }}>Shell interaction corpus</td>
+                  <td><a href="https://huggingface.co/Euroswarms" target="_blank">Registry entry →</a></td>
+                </tr>
+                <tr>
+                  <td className="mono">+ 4 additional deposits</td>
+                  <td style={{ color: 'var(--x-muted)' }}>See the organization page for the complete registry</td>
+                  <td><a href="https://huggingface.co/Euroswarms" target="_blank">View organization →</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <GlyphRule label="Usage" />
+
+        <section data-screen-label="Usage" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="III·III" latin="Usus" title="Obtaining Weights" />
+          <p style={{ marginBottom: '1.25rem' }}>Releases load through standard tooling. There is no access request, no licence key, and no registration.</p>
+          <pre style={{ maxWidth: '48rem', margin: 0, padding: '1.5rem', overflowX: 'auto', background: 'var(--x-panel)', border: '1px solid var(--x-line)', color: 'var(--x-fg)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 1.6 }}><code>{'from transformers import AutoModelForCausalLM, AutoTokenizer\n\ntok = AutoTokenizer.from_pretrained("Euroswarms/CR-CA")\nmodel = AutoModelForCausalLM.from_pretrained("Euroswarms/CR-CA")'}</code></pre>
+        </section>
+      </div>
+    </SiteFrame>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<ModelsPage />);
+</script>
+</body>
+</html>

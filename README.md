@@ -1,105 +1,62 @@
-# Euroswarms Research Website
+# Euroswarms — Institutional Site (design-system build)
 
-Institutional-style static website for Euroswarms R&D Division, built with **React**, **HTML**, **CSS**, and **Tailwind CSS**.
+Static, build-free version of the Euroswarms Institute site, exported from the
+Claude Design system project. Every page is a single HTML file that loads React +
+Babel from a CDN and renders shared chrome from `shared/`; design tokens live under
+`_ds/`. There is no build step — open `index.html` or serve the directory statically.
 
-## Tech Stack
+## Structure
 
-- **React 18** - JavaScript library for building user interfaces
-- **React Router** - Declarative routing for React
-- **HTMX** - Dynamic HTML interactions
-- **Tailwind CSS** - Utility-first CSS framework
-- **Vite** - Next-generation frontend build tool
+- `index.html`, `about.html`, `research.html`, `models.html`, `publications.html`,
+  `volunteer.html`, `contact.html` — the seven pages.
+- `shared/site-chrome.jsx` — doc-control band, nav, footer, sigil, section rules.
+- `shared/site.css` — the "Apparatus" theme (void / archive) and component classes.
+- `shared/reactbits.jsx` — React Bits components, adapted (see below).
+- `shared/tweaks-panel.jsx` — the in-page tweaks panel scaffold.
+- `_ds/…/tokens/*.css` — design tokens (fonts, colors, typography, layout, base).
+- `assets/` — logo marks.
 
-## Project Structure
+The home page (`index.html`) lists the Institute's current programmes — MetaModel,
+Stable Cognition, The Lab, CR-CA, AEGIS, LUAF, ATOMIKA ZER0, KyberEngine, and the
+OpenMind Division — plus the public model registry and bulletin.
 
-```
-website/
-├── public/
-│   └── assets/
-│       └── images/
-│           ├── full-nobg.png      # Full logo with transparent background
-│           ├── Full.png          # Full Euroswarms logo
-│           └── symbolOnly.png    # Symbol-only logo
-├── src/
-│   ├── components/
-│   │   ├── BaseLayout.jsx        # Base layout wrapper
-│   │   └── Navigation.jsx        # Navigation component
-│   ├── pages/
-│   │   ├── Home.jsx              # Homepage
-│   │   ├── Projects.jsx          # Projects index
-│   │   ├── projects/
-│   │   │   ├── Crca.jsx          # CR-CA project page
-│   │   │   └── Lucre.jsx         # Project LUCRE page
-│   │   ├── Publications.jsx       # Publications listing
-│   │   ├── Docs.jsx              # Documentation index
-│   │   └── Contact.jsx            # Contact page
-│   ├── App.jsx                   # Main React app
-│   ├── main.jsx                  # Application entry point
-│   └── style.css                 # Tailwind CSS styles
-├── index.html                    # HTML entry point
-├── vite.config.js                # Vite configuration
-├── tailwind.config.js            # Tailwind CSS configuration
-└── package.json                  # Dependencies
-```
+## Design — "Apparatus" (v3)
 
-## Development
+Institutional-technocratic register: the site carries itself like a controlled
+programme and then releases everything unrestricted. Every page opens with a
+document-control band stating its own reference and revision.
 
-### Setup
+Rules enforced throughout `site.css`: **no gradients, no backdrop-filter, no
+border-radius, no box-shadow.** Colour is a signal, never an ornament — signal
+red (`--x-signal`) marks status, live links, and active state only; Union blue
+(`--x-blue-deep`) is reserved for flagship programmes. Display type is Archivo
+(grotesque), data is JetBrains Mono. The v2 serif and gold accent were retired as
+warm/ecclesiastical and off-register.
 
-```bash
-pnpm install
-```
+Two surfaces via `html[data-theme]`: `void` (operations) and `archive` (paper).
+Both are authored — archive is a cold bone, not a tinted dark theme.
 
-### Run Development Server
+### React Bits
 
-```bash
-pnpm run dev
-```
+`shared/reactbits.jsx` adapts five components from [reactbits.dev]: `DecryptedText`,
+`CountUp`, `Crosshair`, `SurveyGrid` (upstream "Squares"), and `Reveal`
+(upstream "ScrollReveal", minus the blur). They are reimplemented against plain
+hooks + rAF + IntersectionObserver rather than vendored: the upstream versions
+assume a bundler and pull in GSAP or framer-motion, and this site has neither —
+its CDN payload is three SRI-pinned scripts. None of the five need a motion library.
 
-The site will be available at `http://localhost:4321`
+Motion is gated twice — `prefers-reduced-motion` and the site's `motion` tweak
+(via `RBMotion` context). With motion off, every component renders its resolved
+end state immediately; nothing is ever left blank or mid-scramble.
 
-### Build
+Two constraints worth knowing before editing:
 
-```bash
-pnpm run build
-```
+- `.x-grid2` / `.x-grid3` draw their hairlines as the container background showing
+  through 1px gaps. That only works when items fill every cell — a short final row
+  renders the line colour as a solid slab. Use `.loose` when the count doesn't
+  divide by the column count (e.g. the 7-panel Officina grid).
+- Don't put `Reveal` on a panel inside a flush grid, for the same reason: it starts
+  at `opacity: 0` and the grid background shows through. `Reveal` is for table rows.
 
-Output will be in the `dist/` directory.
-
-### Preview Production Build
-
-```bash
-pnpm run preview
-```
-
-## Design Philosophy
-
-- **Institutional**: European research organization aesthetic (CERN/ESA style)
-- **European Blue**: Deep blue (#003399) matching European Union flag
-- **Typography-first**: Serif headings (Crimson Text) with clean sans-serif body text
-- **Responsive**: Dynamic sizing and layouts for all screen sizes
-- **Accessible**: High contrast, semantic HTML structure
-
-## Features
-
-- **React 18**: Modern React with hooks and functional components
-- **HTMX Integration**: Ready for dynamic content swapping
-- **Tailwind CSS**: Utility-first styling with custom European color palette
-- **React Router**: Client-side routing for smooth navigation
-- **Responsive Design**: Mobile-first approach with breakpoints
-
-## Deployment
-
-The site builds to static HTML/CSS/JS. Deploy to:
-
-- **GitHub Pages**: Configured with GitHub Actions workflow
-- **Netlify**: Auto-detects Vite
-- **Vercel**: Auto-detects Vite
-- **NGINX**: Serve `dist/` directory
-
-## Notes
-
-- Assets in `public/` are served at the root (`/assets/...`)
-- Navigation uses React Router for client-side routing
-- All pages use the `BaseLayout` for consistent structure
-- European blue theme throughout with yellow accents
+> Note: this branch is a different architecture from `main` (a Vite/Tailwind app);
+> it is committed as an orphan branch so the two do not share history.

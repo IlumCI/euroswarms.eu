@@ -1,0 +1,46 @@
+/* Euroswarms — Color tokens. Source: euroswarms.eu tailwind.config.js + src/style.css */
+:root {
+  /* Base — European institutional palette */
+  --eu-blue: #003399;          /* Official EU blue */
+  --eu-blue-light: #0056b3;
+  --eu-blue-hover: #0044aa;
+  --eu-blue-dark: #002266;
+  --eu-blue-darker: #001a4d;
+  --eu-gold: #f4c430;          /* Official badge gold */
+  --navy-deep: #0b1020;        /* Deep institutional navy (dark theme) */
+
+  --bg: #f5f7fa;
+  --bg-alt: #e8f0f8;
+  --bg-section: #f0f5fa;
+  --fg: #1a1a1a;
+  --fg-light: #4a5568;
+  --muted: #4a5568;
+  --muted-light: #6b7280;
+  --white: #ffffff;
+
+  --border: #b8d4e8;
+  --border-dark: #9bb8d0;
+  --border-light: #d1e0ed;
+
+  /* Dark-surface companions (from public/assets/style.css) */
+  --dark-bg: #0b1020;
+  --dark-fg: #f5f7fa;
+  --dark-muted: #a3a8b5;
+  --dark-border: #2a2f45;
+
+  /* Semantic aliases */
+  --accent: var(--eu-blue);
+  --accent-hover: var(--eu-blue-hover);
+  --text-body: var(--fg);
+  --text-muted: var(--muted);
+  --surface-page: var(--bg);
+  --surface-section: var(--bg-section);
+  --surface-card: var(--eu-blue);          /* primary card is SOLID EU blue */
+  --surface-card-border: var(--eu-blue-dark);
+  --surface-card-light: var(--white);
+  --on-card: #ffffff;
+  --on-card-muted: #e8f0f8;
+  --link-on-card: var(--eu-gold);
+  --badge-official-bg: var(--eu-gold);
+  --badge-official-fg: #1a1a1a;
+}

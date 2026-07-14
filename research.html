@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="void">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research — Euroswarms</title>
+<link rel="stylesheet" href="_ds/euroswarms-design-system-695957dd-4d70-4192-a06e-943ee951a25f/tokens/fonts.css">
+<link rel="stylesheet" href="shared/site.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/reactbits.jsx"></script>
+<script type="text/babel" src="shared/site-chrome.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "void",
+  "motion": true,
+  "counter": true,
+  "crosshair": true
+}/*EDITMODE-END*/;
+
+// Full portfolio — kept in step with the Active Programmes grid on index.html.
+// `access`: 'open' links a public remote; 'closed' renders a dim access label.
+const PROGRAMMES = [
+  ['ES/RD/2024/002', 'MetaModel', 'Self-reconfiguring hypernetwork transformer', 'Phase 1', 'A', 'open'],
+  ['ES/RD/2024/003', 'Stable Cognition', 'Globular Reasoning Architecture', 'v0.2.0', 'A', 'open'],
+  ['ES/RD/2024/001', 'CR-CA', 'Causal reasoning & counterfactual analysis', 'v1.5.0', 'A', 'open'],
+  ['ES/RD/2025/008', 'LUAF', 'Large-scale Unified Agent Foundry', 'v1.3.5', 'A', 'open'],
+  ['ES/RD/2026/011', 'KyberEngine', 'Generative world models for 3D game synthesis', 'Research', 'B', 'open'],
+  ['ES/RD/2026/006', 'The Lab', 'Compositional exotic-architecture model forge', 'Phase-gated', 'B', 'closed'],
+  ['ES/RD/2026/007', 'AEGIS', 'Autonomous engineering organization', 'v0.1.0', 'B', 'closed'],
+  ['ES/RD/2025/009', 'ATOMIKA ZER0', 'Code-specialised 1.5B model', 'Commercial', 'B', 'closed'],
+  ['ES/RD/2026/012', 'OpenMind Division', 'Autonomous research lab scaffold', 'Internal', 'B', 'closed'],
+  ['ES/RD/2025/004', 'Project LUCRE', 'Multi-agent coordination & incentive-aware execution', 'Active', 'B', 'closed'],
+  ['ES/RD/2026/005', 'CR-CA-Q', 'Quantitative counterfactual extensions', 'In development', 'B', 'closed'],
+];
+
+function ResearchPage() {
+  const [t, setTweak] = useSiteTweaks(TWEAK_DEFAULTS);
+  return (
+    <SiteFrame current="research.html" docRef="ES/RD/2026/010" t={t} setTweak={setTweak}>
+      <PageHead n="II" latin="Opera" refCode="ES/RD/2026/010" title="Research Programmes"
+        lede="Research programmes maintained and published by Euroswarms R&D Division. Programmes may be in active development or released as stable artifacts; all are conducted under the Institute's open-science mandate." />
+
+      <div className="x-wrap" style={{ paddingTop: '3rem' }}>
+        <section data-screen-label="Programme index" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="II·0" latin="Index" title="Index of Programmes" />
+          <div className="x-scroll">
+            <table className="x-table">
+              <caption>Public record — all chartered programmes</caption>
+              <thead>
+                <tr><th>Ref</th><th>Programme</th><th>Subject</th><th>Status</th><th>Series</th><th>Access</th></tr>
+              </thead>
+              <tbody>
+                {PROGRAMMES.map(([ref, name, subject, status, series, access], i) => (
+                  <Reveal as="tr" key={ref} delay={i * 35}>
+                    <td className="mono">{ref}</td>
+                    <td className="name">{name}</td>
+                    <td style={{ color: 'var(--x-muted)' }}>{subject}</td>
+                    <td><span className={'x-status' + (access === 'closed' ? ' dim' : '')}>{status}</span></td>
+                    <td className="mono">{series}</td>
+                    <td className="mono">{access === 'open' ? 'Public' : 'Restricted'}</td>
+                  </Reveal>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section data-screen-label="Flagship detail" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="II·I" latin="Opera prima" title="Flagship Research" />
+          <div className="x-grid2">
+            <a className="x-panel blue" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">Phase 1</span></span>
+                <span style={{ opacity: 0.7 }}>ES/RD/2024/002</span>
+              </span>
+              <h3 style={{ fontSize: '1.5rem' }}>MetaModel</h3>
+              <p style={{ marginBottom: '1.1rem' }}>
+                Hypernetwork-driven transformer that generates task-specific low-rank weight deltas over a frozen base, with a closed-loop self-training and proxy-detection agent.
+              </p>
+              <ul className="x-list" style={{ marginBottom: '1.1rem' }}>
+                <li>Dynamic weight generation from task descriptions</li>
+                <li>TaskAdapter low-rank bottleneck (LoRA-style, at inference)</li>
+                <li>Autonomous SelfCritic loop</li>
+              </ul>
+              <span className="x-status" style={{ color: '#fff' }}>github.com/IlumCI/Metamodel →</span>
+            </a>
+            <a className="x-panel blue" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">v0.2.0</span></span>
+                <span style={{ opacity: 0.7 }}>ES/RD/2024/003</span>
+              </span>
+              <h3 style={{ fontSize: '1.5rem' }}>Stable Cognition</h3>
+              <p style={{ marginBottom: '1.1rem' }}>
+                Globular Reasoning Architecture: populations of latent hypothesis-agents evolving through attention-like field dynamics, insertable into any transformer.
+              </p>
+              <ul className="x-list" style={{ marginBottom: '1.1rem' }}>
+                <li>Agent field with genetic selection per layer</li>
+                <li>Auto-scaling to 1B+ agents</li>
+                <li>Multi-GPU, local and cloud</li>
+              </ul>
+              <span className="x-status" style={{ color: '#fff' }}>github.com/Euroswarms-Institute/Stable-Cognition →</span>
+            </a>
+          </div>
+        </section>
+
+        <GlyphRule label="Portfolio" />
+
+        <section data-screen-label="Other programmes" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="II·II" latin="Opera cetera" title="Other Research Programmes" />
+          <div className="x-grid3">
+            <a className="x-panel" href="https://github.com/Euroswarms-Institute/CR-CA" target="_blank">
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">v1.5.0</span> · PyPI crca</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2024/001</span>
+              </span>
+              <h3>CR-CA</h3>
+              <p style={{ marginBottom: '1.1rem' }}>Causal reasoning and counterfactual analysis for deterministic, explainable agent systems.</p>
+              <span className="x-status">github.com/Euroswarms-Institute/CR-CA →</span>
+            </a>
+            <div className="x-panel">
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">Active</span></span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2025/004</span>
+              </span>
+              <h3>Project LUCRE</h3>
+              <p style={{ marginBottom: '1.1rem' }}>Multi-agent coordination and incentive-aware execution frameworks for distributed systems.</p>
+              <span className="x-status dim">Public registry pending</span>
+            </div>
+            <div className="x-panel">
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span>In development</span>
+                <span style={{ color: 'var(--x-faint)' }}>ES/RD/2026/005</span>
+              </span>
+              <h3>CR-CA-Q</h3>
+              <p style={{ marginBottom: '1.1rem' }}>Quantitative counterfactual extensions for probabilistic reasoning systems.</p>
+              <span className="x-status dim">Not yet released</span>
+            </div>
+          </div>
+          <p className="x-mono" style={{ marginTop: '0.9rem', fontSize: '0.6rem' }}>
+            Full working portfolio — <a href="index.html">active programmes →</a>
+          </p>
+        </section>
+
+        <section data-screen-label="Quick start" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="II·III" latin="Initium" title="Quick Start — CR-CA" />
+          <p style={{ marginBottom: '1.25rem' }}>The CR-CA framework is installable from the public package index. No registration is required.</p>
+          <pre style={{ maxWidth: '48rem', margin: 0, padding: '1.5rem', overflowX: 'auto', background: 'var(--x-panel)', border: '1px solid var(--x-line)', color: 'var(--x-fg)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', lineHeight: 1.6 }}><code>{'pip install crca\n\nfrom crca import CausalModel\nmodel = CausalModel.from_text(scenario)\nresult = model.counterfactual(intervention={"policy": 1})'}</code></pre>
+        </section>
+      </div>
+    </SiteFrame>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<ResearchPage />);
+</script>
+</body>
+</html>
