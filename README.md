@@ -9,7 +9,7 @@ Babel from a CDN and renders shared chrome from `shared/`; design tokens live un
 
 - `index.html`, `about.html`, `research.html`, `models.html`, `publications.html`,
   `volunteer.html`, `contact.html` — the seven pages.
-- `shared/site-chrome.jsx` — doc-control band, nav, footer, sigil, section rules.
+- `shared/site-chrome.jsx` — nav, footer, sigil, section rules.
 - `shared/site.css` — the "Apparatus" theme (void / archive) and component classes.
 - `shared/reactbits.jsx` — React Bits components, adapted (see below).
 - `shared/tweaks-panel.jsx` — the in-page tweaks panel scaffold.
@@ -23,8 +23,7 @@ OpenMind Division — plus the public model registry and bulletin.
 ## Design — "Apparatus" (v3)
 
 Institutional-technocratic register: the site carries itself like a controlled
-programme and then releases everything unrestricted. Every page opens with a
-document-control band stating its own reference and revision.
+programme and then releases everything unrestricted.
 
 Rules enforced throughout `site.css`: **no gradients, no backdrop-filter, no
 border-radius, no box-shadow.** Colour is a signal, never an ornament — signal

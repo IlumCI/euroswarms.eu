@@ -1,4 +1,4 @@
-/* Euroswarms v3 — shared chrome: doc band, nav, footer, sigil, section rules, helpers. */
+/* Euroswarms v3 — shared chrome: nav, footer, sigil, section rules, helpers. */
 
 const ES_NAV = [
   ['Home', 'index.html', 'Domus'],
@@ -10,7 +10,6 @@ const ES_NAV = [
   ['Contact', 'contact.html', 'Litterae'],
 ];
 
-const ES_REV = 'REV 05';
 const ES_LS_KEY = 'es_site_tweaks_v2';
 
 function esReadStored(defaults) {
@@ -149,23 +148,6 @@ function Btn({ href, variant = '', onClick, children }) {
 
 /* ── Chrome ── */
 
-/* Document-control band. The form of a classification marking, stating the
-   opposite: everything here is released and unrestricted. */
-function DocBand({ docRef }) {
-  return (
-    <div className="x-docband">
-      <div className="x-docband-inner">
-        <i className="x-dot live" />
-        <b>Public release — unrestricted</b>
-        <span className="hide-sm">Euroswarms R&amp;D Division</span>
-        <span className="rule hide-sm"></span>
-        <span className="hide-sm">{docRef || 'ES/RD/2026'}</span>
-        <span>{ES_REV}</span>
-      </div>
-    </div>
-  );
-}
-
 function SiteNav({ current }) {
   return (
     <header className="x-nav">
@@ -224,7 +206,7 @@ function SiteFooter({ t }) {
   );
 }
 
-function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
+function SiteFrame({ current, t, setTweak, extraTweaks, children }) {
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', t.theme === 'archive' ? 'archive' : 'void');
   }, [t.theme]);
@@ -236,7 +218,6 @@ function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
   return (
     <RBMotion.Provider value={!!t.motion}>
       <div className="x-frame" aria-hidden="true"><i /><i /><i /><i /></div>
-      <DocBand docRef={docRef} />
       <SiteNav current={current} />
       <main>{children}</main>
       <SiteFooter t={t} />
@@ -272,6 +253,6 @@ function PageHead({ n, latin, refCode, title, lede }) {
 }
 
 Object.assign(window, {
-  ES_NAV, ES_REV, useSiteTweaks, Blink, Sigil, VisitorCounter,
-  Sec, GlyphRule, Btn, DocBand, SiteNav, SiteFooter, SiteFrame, PageHead,
+  ES_NAV, useSiteTweaks, Blink, Sigil, VisitorCounter,
+  Sec, GlyphRule, Btn, SiteNav, SiteFooter, SiteFrame, PageHead,
 });
