@@ -13,22 +13,42 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/reactbits.jsx"></script>
 <script type="text/babel" src="shared/site-chrome.jsx"></script>
 <script type="text/babel">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "void",
   "motion": true,
-  "counter": true
+  "counter": true,
+  "crosshair": true
 }/*EDITMODE-END*/;
+
+const MANDATE = [
+  ['01', 'Method', 'Frameworks are grounded in structural causal models and formal argument. A claim that cannot be stated formally is not carried.'],
+  ['02', 'Legibility', 'Every system renders its reasoning inspectable through counterfactual analysis. Output without a traceable derivation is not accepted as a result.'],
+  ['03', 'Disclosure', 'Code, weights, and datasets are deposited in public registries as a term of every programme charter. This is not a preference.'],
+];
+
+const BULLETIN = [
+  ['2026-07-13', 'B-44', 'MetaModel probe grafts the hypernetwork onto Qwen3-0.6B; behavioral-spec conditioning lifts held-out zero-shot accuracy from 0% to 77%.'],
+  ['2026-07-10', 'B-43', 'The Lab clears its bootstrap-validate and pairwise-sweep phase gates; the component registry is operational.'],
+  ['2026-07-06', 'B-42', 'AEGIS v0.1.0 assembled — autonomous engineering loop verified by a 162-test suite, including offline end-to-end runs.'],
+  ['2026-07-02', 'B-41', 'MetaModel enters Phase 1 trials of the autonomous SelfCritic loop.'],
+  ['2026-06-18', 'B-40', 'Stable Cognition v0.2.0 released; agent field auto-scaling verified to 1B+ agents.'],
+  ['2026-05-30', 'B-39', 'CR-CA 2B weights published to the open model registry.'],
+  ['2026-05-12', 'B-38', <React.Fragment>Volunteer research appointments open across all divisions. <a href="volunteer.html">Apply →</a></React.Fragment>],
+];
 
 function Hero({ t }) {
   return (
     <section className="x-hero" data-screen-label="Hero">
-      <div className="x-hero-sigil"><Sigil size={760} spin={t.motion} /></div>
-      <div className="x-wrap" style={{ position: 'relative', zIndex: 1, padding: '7.5rem 3rem 7rem' }}>
-        <h1>
-          Collective intelligence,<br />engineered for <em>scrutiny</em>.
-        </h1>
+      <div className="x-hero-grid"><SurveyGrid cell={46} /></div>
+      <div className="x-hero-sigil"><Sigil size={720} spin={t.motion} /></div>
+      <div className="x-wrap" style={{ position: 'relative', zIndex: 1, padding: '6.5rem 3rem 6rem' }}>
+        <span className="x-mono" style={{ display: 'block', marginBottom: '1.75rem' }}>
+          <span className="au">Euroswarms</span> · Institute for Collective Intelligence Research
+        </span>
+        <h1>Collective intelligence,<br />engineered for <em>scrutiny</em>.</h1>
         <p className="lede">
           Independent research in agentic reasoning architectures, causal modeling, and constraint-driven AI systems for real-world decision processes.
         </p>
@@ -37,15 +57,16 @@ function Hero({ t }) {
   );
 }
 
-function ProgrammePanel({ href, tag, tagNote, title, foot, footDim, children }) {
+function ProgrammePanel({ href, code, tag, tagNote, title, foot, footDim, children }) {
   const inner = (
     <React.Fragment>
-      <span className="x-mono"><span className="au">{tag}</span>{tagNote ? ' · ' + tagNote : ''}</span>
+      <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+        <span><span className="au">{tag}</span>{tagNote ? ' · ' + tagNote : ''}</span>
+        {code && <span style={{ color: 'var(--x-faint)' }}>{code}</span>}
+      </span>
       <h3>{title}</h3>
-      <p style={{ marginBottom: '1.25rem' }}>{children}</p>
-      {foot && (footDim
-        ? <span className="x-status dim">{foot}</span>
-        : <span className="x-mono" style={{ color: 'var(--x-gold)' }}>{foot} →</span>)}
+      <p style={{ marginBottom: '1.1rem' }}>{children}</p>
+      {foot && <span className={footDim ? 'x-status dim' : 'x-status'}>{foot}</span>}
     </React.Fragment>
   );
   return href
@@ -56,131 +77,142 @@ function ProgrammePanel({ href, tag, tagNote, title, foot, footDim, children }) 
 function HomePage() {
   const [t, setTweak] = useSiteTweaks(TWEAK_DEFAULTS);
   return (
-    <SiteFrame current="index.html" t={t} setTweak={setTweak}>
+    <SiteFrame current="index.html" docRef="ES/RD/2026/000" t={t} setTweak={setTweak}>
       <Hero t={t} />
 
-      <div className="x-wrap" style={{ paddingTop: '5rem' }}>
-        <section data-screen-label="I Doctrina" style={{ marginBottom: '5rem' }}>
+      <div className="x-wrap" style={{ paddingTop: '4rem' }}>
+        <section data-screen-label="I Doctrina" style={{ marginBottom: '4.5rem' }}>
           <Sec n="I" latin="Doctrina" title="Mandate" />
-          <p style={{ fontSize: '1.1rem', marginBottom: '2rem', maxWidth: '60rem' }}>
-            The Institute is dedicated to advancing explainable AI through rigorous causal reasoning frameworks. We develop systems that combine structural causal modeling with modern AI capabilities to enable transparent, deterministic decision-making — and we publish the results in full.
+          <p style={{ fontSize: '1.02rem', marginBottom: '1.75rem', maxWidth: '62rem' }}>
+            The Institute exists to make machine reasoning legible. It develops systems combining structural causal modeling with modern AI capability to produce transparent, deterministic decision processes — and publishes the results in full, without exception.
           </p>
+          {/* No Reveal on flush-grid panels: they start at opacity 0, so the
+              grid's hairline background shows through as a solid slab until
+              they land. Reveal is for table rows. */}
           <div className="x-grid3">
-            <div className="x-panel">
-              <h3>Rigorous Methodology</h3>
-              <p>Formally grounded frameworks based on structural causal models and theoretical foundations.</p>
-            </div>
-            <div className="x-panel">
-              <h3>Explainable Systems</h3>
-              <p>Transparent AI that provides clear explanations through counterfactual analysis.</p>
-            </div>
-            <div className="x-panel">
-              <h3>Open Research</h3>
-              <p>Publicly available frameworks, code, and research to advance the field collectively.</p>
-            </div>
+            {MANDATE.map(([n, title, body]) => (
+              <div className="x-panel" key={n}>
+                <span className="x-mono"><span className="au">Art. {n}</span></span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section data-screen-label="II Opera" style={{ marginBottom: '5rem' }}>
+        <section data-screen-label="II Opera" style={{ marginBottom: '4.5rem' }}>
           <Sec n="II" latin="Opera" title="Flagship Programmes" />
           <div className="x-grid2">
-            <a className="x-panel blue" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.5rem' }}>
-              <span className="x-mono"><span className="au">Phase 1</span></span>
-              <h3 style={{ fontSize: '1.7rem' }}>MetaModel</h3>
-              <p style={{ marginBottom: '1.25rem' }}>
+            <a className="x-panel blue" href="https://github.com/IlumCI/Metamodel" target="_blank" style={{ padding: '2.25rem' }}>
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">Phase 1</span></span>
+                <span style={{ opacity: 0.7 }}>ES/RD/2024/002</span>
+              </span>
+              <h3 style={{ fontSize: '1.5rem' }}>MetaModel</h3>
+              <p style={{ marginBottom: '1.1rem' }}>
                 A single model that reconfigures its own weights per task: an LSTM hypernetwork reads a task description and generates low-rank weight deltas over a frozen base transformer, with an autonomous self-critic loop that detects proxy shortcuts. In the latest probe the hypernetwork is grafted onto a pretrained Qwen3-0.6B — conditioning on behavioral specifications lifts held-out zero-shot accuracy from 0% to 77%.
               </p>
-              <span className="x-mono" style={{ color: 'var(--x-gold)' }}>github.com/IlumCI/Metamodel →</span>
+              <span className="x-status" style={{ color: '#fff' }}>github.com/IlumCI/Metamodel →</span>
             </a>
-            <a className="x-panel blue" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.5rem' }}>
-              <span className="x-mono"><span className="au">v0.2.0</span></span>
-              <h3 style={{ fontSize: '1.7rem' }}>Stable Cognition</h3>
-              <p style={{ marginBottom: '1.25rem' }}>
+            <a className="x-panel blue" href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank" style={{ padding: '2.25rem' }}>
+              <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                <span><span className="au">v0.2.0</span></span>
+                <span style={{ opacity: 0.7 }}>ES/RD/2024/003</span>
+              </span>
+              <h3 style={{ fontSize: '1.5rem' }}>Stable Cognition</h3>
+              <p style={{ marginBottom: '1.1rem' }}>
                 Globular Reasoning Architecture — inspired by globular clusters, it evolves populations of latent hypothesis-agents through attention-like field dynamics, and integrates into any transformer. Agent-field auto-scaling is verified past 1B agents; a hypernetwork upgrade of the field is in active research.
               </p>
-              <span className="x-mono" style={{ color: 'var(--x-gold)' }}>github.com/Euroswarms-Institute/Stable-Cognition →</span>
+              <span className="x-status" style={{ color: '#fff' }}>github.com/Euroswarms-Institute/Stable-Cognition →</span>
             </a>
           </div>
         </section>
 
-        <section data-screen-label="III Officina" style={{ marginBottom: '5rem' }}>
+        <section data-screen-label="III Officina" style={{ marginBottom: '4.5rem' }}>
           <Sec n="III" latin="Officina" title="Active Programmes" />
-          <p className="x-mono" style={{ marginBottom: '2rem' }}>Working portfolio of the institute — current divisions and instruments</p>
-          <div className="x-grid3">
-            <ProgrammePanel tag="Active" tagNote="Phase-gated" title="The Lab" foot="Repository private — publication pending" footDim>
+          <p className="x-mono" style={{ marginBottom: '1.5rem' }}>Working portfolio — current divisions and instruments</p>
+          {/* .loose — 7 panels never fill a 3-column flush grid; see site.css */}
+          <div className="x-grid3 loose">
+            <ProgrammePanel code="ES/RD/2026/006" tag="Active" tagNote="Phase-gated" title="The Lab" foot="Repository private — publication pending" footDim>
               Compositional exotic-architecture model forge: ingests ML research papers, canonicalizes neural-network components into a queryable registry, and searches for high-performing non-standard architectures through a staged evolutionary loop over a torch.export IR.
             </ProgrammePanel>
-            <ProgrammePanel href="https://github.com/Euroswarms-Institute/CR-CA" tag="v1.5.0" tagNote="PyPI crca" title="CR-CA" foot="github.com/Euroswarms-Institute/CR-CA">
+            <ProgrammePanel href="https://github.com/Euroswarms-Institute/CR-CA" code="ES/RD/2024/001" tag="v1.5.0" tagNote="PyPI crca" title="CR-CA" foot="github.com/Euroswarms-Institute/CR-CA →">
               Causal reasoning &amp; counterfactual analysis stack: structural causal models, deterministic simulation, LLM-assisted workflows, and specialized branches for quantitative trading, socioeconomic dynamics, and corporate governance.
             </ProgrammePanel>
-            <ProgrammePanel tag="v0.1.0" tagNote="Internal" title="AEGIS" foot="Public registry pending" footDim>
+            <ProgrammePanel code="ES/RD/2026/007" tag="v0.1.0" tagNote="Internal" title="AEGIS" foot="Public registry pending" footDim>
               A local-first autonomous engineering organization: continuously observes repositories, measures their health, estimates the ROI of candidate improvements, allocates specialized workers, and validates every change against a hard quality gate.
             </ProgrammePanel>
-            <ProgrammePanel href="https://github.com/Euroswarms-Institute/LUAF" tag="v1.3.5" tagNote="PyPI luaf" title="LUAF" foot="github.com/Euroswarms-Institute/LUAF">
+            <ProgrammePanel href="https://github.com/Euroswarms-Institute/LUAF" code="ES/RD/2025/008" tag="v1.3.5" tagNote="PyPI luaf" title="LUAF" foot="github.com/Euroswarms-Institute/LUAF →">
               Large-scale Unified Agent Foundry. One CLI — brief → research → build → validate → launch — turning a business brief into a validated, tokenized autonomous agent unit on swarms.world.
             </ProgrammePanel>
-            <ProgrammePanel tag="Commercial" tagNote="Private licence" title="ATOMIKA ZER0" foot="Licensed under private commercial terms" footDim>
+            <ProgrammePanel code="ES/RD/2025/009" tag="Commercial" tagNote="Private licence" title="ATOMIKA ZER0" foot="Licensed under private commercial terms" footDim>
               A 1.5-billion-parameter code-specialised model scoring 90.9% pass@1 across the full HumanEval suite (164/164), delivered and licensed as a single artifact.
             </ProgrammePanel>
-            <ProgrammePanel href="https://github.com/IlumCI/KyberEngine" tag="Research" tagNote="Proprietary" title="KyberEngine" foot="github.com/IlumCI/KyberEngine">
+            <ProgrammePanel href="https://github.com/IlumCI/KyberEngine" code="ES/RD/2026/011" tag="Research" tagNote="Proprietary" title="KyberEngine" foot="github.com/IlumCI/KyberEngine →">
               An AI/ML-powered 3D game engine that generates playable end-to-end games via generative world models — panoramic world generation, an action-conditioned diffusion-transformer world model, and kinematic motion diffusion.
             </ProgrammePanel>
-            <ProgrammePanel tag="Internal" tagNote="Research division" title="OpenMind Division" foot="Findings released via the bulletin" footDim>
+            <ProgrammePanel code="ES/RD/2026/012" tag="Internal" tagNote="Research division" title="OpenMind Division" foot="Findings released via the bulletin" footDim>
               The institute's autonomous research lab: a Director-led hierarchy of research agents probing reasoning architectures. Its meta-transformer and hypernetwork line feeds the MetaModel flagship programme.
             </ProgrammePanel>
           </div>
         </section>
 
-        <section data-screen-label="IV Archivum" style={{ marginBottom: '5rem' }}>
+        <GlyphRule label="Registry" />
+
+        <section data-screen-label="IV Archivum" style={{ marginBottom: '4.5rem' }}>
           <Sec n="IV" latin="Archivum" title="Registry of Public Releases" />
-          <table className="x-table">
-            <caption>Weights registry — huggingface.co/Euroswarms</caption>
-            <thead>
-              <tr><th>Identifier</th><th>Parameters</th><th>Task</th><th>Access</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/AtomCoder</td>
-                <td className="mono">2B</td>
-                <td>Code generation</td>
-                <td><a href="https://huggingface.co/Euroswarms/AtomCoder" target="_blank">Registry entry →</a></td>
-              </tr>
-              <tr>
-                <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/Stable-Atomic</td>
-                <td className="mono">2B</td>
-                <td>Reasoning</td>
-                <td><a href="https://huggingface.co/Euroswarms/Stable-Atomic" target="_blank">Registry entry →</a></td>
-              </tr>
-              <tr>
-                <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/CR-CA</td>
-                <td className="mono">2B</td>
-                <td>Text generation · causal reasoning</td>
-                <td><a href="https://huggingface.co/Euroswarms/CR-CA" target="_blank">Registry entry →</a></td>
-              </tr>
-            </tbody>
-          </table>
-          <p className="x-mono" style={{ marginTop: '1rem', fontSize: '0.65rem' }}>
+          <div className="x-scroll">
+            <table className="x-table">
+              <caption>Weights registry — huggingface.co/Euroswarms</caption>
+              <thead>
+                <tr><th>Identifier</th><th>Parameters</th><th>Task</th><th>Access</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/AtomCoder</td>
+                  <td className="mono">2B</td>
+                  <td>Code generation</td>
+                  <td><a href="https://huggingface.co/Euroswarms/AtomCoder" target="_blank">Registry entry →</a></td>
+                </tr>
+                <tr>
+                  <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/Stable-Atomic</td>
+                  <td className="mono">2B</td>
+                  <td>Reasoning</td>
+                  <td><a href="https://huggingface.co/Euroswarms/Stable-Atomic" target="_blank">Registry entry →</a></td>
+                </tr>
+                <tr>
+                  <td className="mono" style={{ color: 'var(--x-fg)' }}>Euroswarms/CR-CA</td>
+                  <td className="mono">2B</td>
+                  <td>Text generation · causal reasoning</td>
+                  <td><a href="https://huggingface.co/Euroswarms/CR-CA" target="_blank">Registry entry →</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="x-mono" style={{ marginTop: '0.9rem', fontSize: '0.6rem' }}>
             Plus six open datasets, including CommandNet and bash — <a href="models.html">full registry →</a>
           </p>
         </section>
 
-        <section data-screen-label="V Acta" style={{ marginBottom: '5rem' }}>
+        <section data-screen-label="V Acta" style={{ marginBottom: '4.5rem' }}>
           <Sec n="V" latin="Acta" title="Bulletin" />
-          <table className="x-table">
-            <caption>Official notices — series B</caption>
-            <thead>
-              <tr><th style={{ width: '9rem' }}>Date</th><th style={{ width: '6rem' }}>№</th><th>Notice</th></tr>
-            </thead>
-            <tbody>
-              <tr><td className="mono">2026-07-13</td><td className="mono">B-44</td><td>MetaModel probe grafts the hypernetwork onto Qwen3-0.6B; behavioral-spec conditioning lifts held-out zero-shot accuracy from 0% to 77%.</td></tr>
-              <tr><td className="mono">2026-07-10</td><td className="mono">B-43</td><td>The Lab clears its bootstrap-validate and pairwise-sweep phase gates; the component registry is operational.</td></tr>
-              <tr><td className="mono">2026-07-06</td><td className="mono">B-42</td><td>AEGIS v0.1.0 assembled — autonomous engineering loop verified by a 162-test suite, including offline end-to-end runs.</td></tr>
-              <tr><td className="mono">2026-07-02</td><td className="mono">B-41</td><td>MetaModel enters Phase 1 trials of the autonomous SelfCritic loop.</td></tr>
-              <tr><td className="mono">2026-06-18</td><td className="mono">B-40</td><td>Stable Cognition v0.2.0 released; agent field auto-scaling verified to 1B+ agents.</td></tr>
-              <tr><td className="mono">2026-05-30</td><td className="mono">B-39</td><td>CR-CA 2B weights published to the open model registry.</td></tr>
-              <tr><td className="mono">2026-05-12</td><td className="mono">B-38</td><td>Volunteer research appointments open across all divisions. <a href="volunteer.html">Apply →</a></td></tr>
-            </tbody>
-          </table>
+          <div className="x-scroll">
+            <table className="x-table">
+              <caption>Official notices — series B</caption>
+              <thead>
+                <tr><th style={{ width: '9rem' }}>Date</th><th style={{ width: '6rem' }}>№</th><th>Notice</th></tr>
+              </thead>
+              <tbody>
+                {BULLETIN.map(([date, no, notice], i) => (
+                  <Reveal as="tr" key={no} delay={i * 45}>
+                    <td className="mono">{date}</td>
+                    <td className="mono">{no}</td>
+                    <td>{notice}</td>
+                  </Reveal>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </SiteFrame>

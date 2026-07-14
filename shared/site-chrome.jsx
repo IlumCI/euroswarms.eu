@@ -1,4 +1,4 @@
-/* Euroswarms v2 — shared chrome: frame, nav, footer, sigil, tweaks, helpers. */
+/* Euroswarms v3 — shared chrome: doc band, nav, footer, sigil, section rules, helpers. */
 
 const ES_NAV = [
   ['Home', 'index.html', 'Domus'],
@@ -10,6 +10,7 @@ const ES_NAV = [
   ['Contact', 'contact.html', 'Litterae'],
 ];
 
+const ES_REV = 'REV 05';
 const ES_LS_KEY = 'es_site_tweaks_v2';
 
 function esReadStored(defaults) {
@@ -37,16 +38,16 @@ function useSiteTweaks(defaults) {
 
 function Blink() { return <span className="x-blink" aria-hidden="true">█</span>; }
 
-/* ── The Concordia Sigil — 12 stars, concentric rings, radial ticks ── */
+/* ── Union Sigil — 12 stars, bearing scale, centre mark ──
+   Twelve stars for the Union; the 72-tick ring reads as a bearing scale rather
+   than a seal. Stars in bone, ticks in line, cardinals and centre in signal. */
 function Sigil({ size = 520, spin = true, opacity = 1 }) {
   const s = size, c = s / 2;
   const star = (cx, cy, r) => {
     let d = '';
     for (let i = 0; i < 5; i++) {
       const a = (i * 4 * Math.PI) / 5;
-      const x = cx + r * Math.sin(a);
-      const y = cy - r * Math.cos(a);
-      d += (i === 0 ? 'M' : 'L') + x.toFixed(2) + ' ' + y.toFixed(2);
+      d += (i === 0 ? 'M' : 'L') + (cx + r * Math.sin(a)).toFixed(2) + ' ' + (cy - r * Math.cos(a)).toFixed(2);
     }
     return d + 'Z';
   };
@@ -59,60 +60,76 @@ function Sigil({ size = 520, spin = true, opacity = 1 }) {
   const ticks = [];
   for (let i = 0; i < 72; i++) {
     const a = (i * Math.PI) / 36;
-    const r1 = s * 0.44, r2 = i % 6 === 0 ? s * 0.41 : s * 0.428;
-    ticks.push([c + r1 * Math.sin(a), c - r1 * Math.cos(a), c + r2 * Math.sin(a), c - r2 * Math.cos(a)]);
+    const major = i % 18 === 0;
+    const r1 = s * 0.44, r2 = major ? s * 0.395 : (i % 6 === 0 ? s * 0.415 : s * 0.43);
+    ticks.push([c + r1 * Math.sin(a), c - r1 * Math.cos(a), c + r2 * Math.sin(a), c - r2 * Math.cos(a), major]);
   }
   return (
     <svg width={s} height={s} viewBox={'0 0 ' + s + ' ' + s} style={{ display: 'block', opacity }} aria-hidden="true">
       <g className={spin ? 'x-sigil-spin' : ''}>
-        <circle cx={c} cy={c} r={s * 0.46} fill="none" stroke="var(--x-gold-dim)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.44} fill="none" stroke="var(--x-line)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.36} fill="none" stroke="var(--x-line)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.24} fill="none" stroke="var(--x-line)" strokeWidth="1" />
-        <circle cx={c} cy={c} r={s * 0.10} fill="none" stroke="var(--x-gold-dim)" strokeWidth="1" />
+        <circle cx={c} cy={c} r={s * 0.46} fill="none" stroke="var(--x-line)" strokeWidth="1" />
+        <circle cx={c} cy={c} r={s * 0.44} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+        <circle cx={c} cy={c} r={s * 0.36} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+        <circle cx={c} cy={c} r={s * 0.24} fill="none" stroke="var(--x-line-soft)" strokeWidth="1" />
+        <circle cx={c} cy={c} r={s * 0.10} fill="none" stroke="var(--x-signal-dim)" strokeWidth="1" />
         {ticks.map((t2, i) => (
-          <line key={i} x1={t2[0]} y1={t2[1]} x2={t2[2]} y2={t2[3]} stroke={i % 6 === 0 ? 'var(--x-gold-dim)' : 'var(--x-line)'} strokeWidth="1" />
+          <line key={i} x1={t2[0]} y1={t2[1]} x2={t2[2]} y2={t2[3]}
+            stroke={t2[4] ? 'var(--x-signal-dim)' : 'var(--x-line)'} strokeWidth="1" />
         ))}
         {[0, 1, 2, 3, 4, 5].map((i) => {
-          const a = (i * Math.PI) / 6;
-          const r = s * 0.36;
+          const a = (i * Math.PI) / 6, r = s * 0.36;
           return <line key={i} x1={c - r * Math.sin(a)} y1={c + r * Math.cos(a)} x2={c + r * Math.sin(a)} y2={c - r * Math.cos(a)} stroke="var(--x-line-soft)" strokeWidth="1" />;
         })}
-        {stars.map((d, i) => <path key={i} d={d} fill="var(--x-gold)" />)}
+        {stars.map((d, i) => <path key={i} d={d} fill="var(--x-fg)" />)}
       </g>
-      <circle cx={c} cy={c} r={s * 0.012} fill="var(--x-gold)" />
+      <circle cx={c} cy={c} r={s * 0.014} fill="var(--x-signal)" />
     </svg>
   );
 }
 
+/* Access odometer. Deterministic drift from a fixed epoch — no backend, and the
+   figure must not jump between pages within a session. */
 function VisitorCounter() {
-  const start = new Date('2026-01-01T00:00:00');
-  const n = 4213588 + Math.floor((Date.now() - start.getTime()) / 86400000) * 1371;
-  const s = String(n).padStart(8, '0');
+  const epoch = Date.UTC(2026, 0, 1);
+  const n = 4213588 + Math.floor((Date.now() - epoch) / 86400000) * 1371;
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
-      <span className="x-mono" style={{ fontSize: '0.6rem' }}>Visitors since MCMXCI</span>
-      <span style={{ display: 'inline-flex', border: '1px solid var(--x-line)' }}>
-        {s.split('').map((d, i) => (
-          <span key={i} style={{ display: 'inline-block', width: '1.15em', textAlign: 'center', background: 'var(--x-panel-2)', color: 'var(--x-gold)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 600, padding: '0.12rem 0', borderRight: i < 7 ? '1px solid var(--x-line)' : 'none' }}>{d}</span>
-        ))}
-      </span>
+      <span className="x-mono" style={{ fontSize: '0.56rem' }}>Recorded accesses</span>
+      <CountUp to={n} pad={8} duration={2000} render={(s) => (
+        <span style={{ display: 'inline-flex', border: '1px solid var(--x-line)' }}>
+          {s.split('').map((d, i) => (
+            <span key={i} style={{
+              display: 'inline-block', width: '1.15em', textAlign: 'center',
+              background: 'var(--x-panel-2)', color: 'var(--x-signal)',
+              fontFamily: 'var(--font-mono)', fontSize: '0.76rem', fontWeight: 600,
+              padding: '0.1rem 0', borderRight: i < 7 ? '1px solid var(--x-line)' : 'none',
+            }}>{d}</span>
+          ))}
+        </span>
+      )} />
     </span>
   );
 }
 
+/* Numbered article heading. `n` and `latin` are rendered as the article index —
+   in v2 both props were accepted and silently dropped. */
 function Sec({ n, latin, title }) {
   return (
     <div className="x-sec">
-      <span className="rule"></span>
+      {n && <span className="idx">{n}</span>}
       <h2>{title}</h2>
       <span className="rule"></span>
+      {latin && <span className="latin">{latin}</span>}
     </div>
   );
 }
 
-function GlyphRule() {
-  return <div className="x-glyph-rule" aria-hidden="true"><span>✶ ✶ ✶</span></div>;
+function GlyphRule({ label = 'Section break' }) {
+  return (
+    <div className="x-glyph-rule" aria-hidden="true">
+      <span><i className="x-dot off" />{label}<i className="x-dot off" /></span>
+    </div>
+  );
 }
 
 function Btn({ href, variant = '', onClick, children }) {
@@ -124,20 +141,33 @@ function Btn({ href, variant = '', onClick, children }) {
 
 /* ── Chrome ── */
 
-function SiteNav({ current, t }) {
-  const archive = t && t.theme === 'archive';
+/* Document-control band. The form of a classification marking, stating the
+   opposite: everything here is released and unrestricted. */
+function DocBand({ docRef }) {
+  return (
+    <div className="x-docband">
+      <div className="x-docband-inner">
+        <i className="x-dot live" />
+        <b>Public release — unrestricted</b>
+        <span className="hide-sm">Euroswarms R&amp;D Division</span>
+        <span className="rule hide-sm"></span>
+        <span className="hide-sm">{docRef || 'ES/RD/2026'}</span>
+        <span>{ES_REV}</span>
+      </div>
+    </div>
+  );
+}
+
+function SiteNav({ current }) {
   return (
     <header className="x-nav">
       <div className="x-nav-inner">
-        <a href="index.html" style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', backgroundColor: archive ? 'var(--x-blue-deep)' : 'transparent', padding: archive ? '0.35rem 1rem' : 0 }}>
-          <img src="assets/full-nobg.png" alt="Euroswarms" style={{ height: '116px', width: 'auto', display: 'block' }} />
+        <a href="index.html" style={{ borderBottom: 'none', display: 'flex', alignItems: 'center', flex: 'none' }}>
+          <img src="assets/full-nobg.png" alt="Euroswarms" style={{ height: '76px', width: 'auto', display: 'block' }} />
         </a>
-        <nav className="x-nav-links" style={{ justifyContent: 'center' }}>
-          {ES_NAV.map(([label, href], i) => (
-            <React.Fragment key={href}>
-              {i > 0 && <span aria-hidden="true" className="x-nav-sep" style={{ color: 'var(--x-gold-dim)', fontSize: '0.5rem', alignSelf: 'center' }}>◆</span>}
-              <a href={href} className={current === href ? 'on' : ''}>{label}</a>
-            </React.Fragment>
+        <nav className="x-nav-links">
+          {ES_NAV.map(([label, href]) => (
+            <a key={href} href={href} className={current === href ? 'on' : ''}>{label}</a>
           ))}
         </nav>
       </div>
@@ -146,79 +176,96 @@ function SiteNav({ current, t }) {
 }
 
 function SiteFooter({ t }) {
-  const col = { fontFamily: 'var(--font-serif)', fontSize: '1.1rem', margin: '0 0 1rem', color: 'var(--x-fg)' };
-  const lnk = { display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--x-muted)', borderBottom: 'none', marginBottom: '0.65rem' };
+  const col = { fontFamily: 'var(--font-mono)', fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--x-muted)', margin: '0 0 1rem' };
+  const lnk = { display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.66rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--x-muted)', borderBottom: 'none', marginBottom: '0.55rem' };
   return (
     <footer className="x-footer">
-      <div className="x-wrap" style={{ padding: '3.5rem 3rem 2.5rem' }}>
+      <div className="x-wrap" style={{ padding: '3rem 3rem 2rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(200px, 1.2fr) repeat(3, minmax(150px, 1fr))', gap: '2rem', marginBottom: '2.5rem' }}>
           <div>
-            <Sigil size={110} spin={t.motion} />
-            <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '1.05rem', color: 'var(--x-muted)', margin: '1rem 0 0', maxWidth: '22rem' }}>
-              "A decision system whose conclusions cannot be traced has no place in consequential decision processes."
+            <Sigil size={96} spin={t.motion} />
+            <p style={{ fontSize: '0.9rem', color: 'var(--x-muted)', margin: '1rem 0 0', maxWidth: '22rem' }}>
+              A decision system whose conclusions cannot be traced has no place in consequential decision processes.
             </p>
           </div>
           <div>
             <h3 style={col}>Research</h3>
             <a style={lnk} href="https://github.com/IlumCI/Metamodel" target="_blank">MetaModel</a>
             <a style={lnk} href="https://github.com/Euroswarms-Institute/Stable-Cognition" target="_blank">Stable Cognition</a>
-            <a style={lnk} href="research.html">All Research</a>
+            <a style={lnk} href="research.html">All programmes</a>
           </div>
           <div>
             <h3 style={col}>Registry</h3>
-            <a style={lnk} href="models.html">Model Registry</a>
+            <a style={lnk} href="models.html">Model registry</a>
             <a style={lnk} href="https://huggingface.co/Euroswarms" target="_blank">Hugging Face</a>
             <a style={lnk} href="publications.html">Publications</a>
           </div>
           <div>
-            <h3 style={col}>Contact</h3>
-            <a style={lnk} href="contact.html">Correspondence</a>
+            <h3 style={col}>Correspondence</h3>
+            <a style={lnk} href="contact.html">Channels</a>
             <a style={lnk} href="volunteer.html">Appointments</a>
-            <a style={lnk} href="https://github.com/IlumCI/euroswarms.eu" target="_blank">Site Source</a>
+            <a style={lnk} href="https://github.com/IlumCI/euroswarms.eu" target="_blank">Site source</a>
           </div>
         </div>
-        <div style={{ borderTop: '1px solid var(--x-line)', paddingTop: '1.5rem' }}>
-          <span className="x-mono" style={{ fontSize: '0.62rem' }}>© 2026 Euroswarms R&amp;D Division — Independent research in agentic &amp; causal systems</span>
+        <div style={{ borderTop: '1px solid var(--x-line)', paddingTop: '1.25rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+          <span className="x-mono" style={{ fontSize: '0.58rem' }}>© 2026 Euroswarms R&amp;D Division — Independent research in agentic &amp; causal systems</span>
+          {t.counter && <VisitorCounter />}
         </div>
       </div>
     </footer>
   );
 }
 
-function SiteFrame({ current, t, setTweak, extraTweaks, children }) {
+function SiteFrame({ current, docRef, t, setTweak, extraTweaks, children }) {
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', t.theme === 'archive' ? 'archive' : 'void');
   }, [t.theme]);
+  // Mirrored onto the root so pure-CSS animations honour the tweak too; the
+  // React components read the context instead.
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-motion', t.motion ? 'on' : 'off');
+  }, [t.motion]);
   return (
-    <React.Fragment>
-      <div className="x-frame" aria-hidden="true"></div>
-      <SiteNav current={current} t={t} />
+    <RBMotion.Provider value={!!t.motion}>
+      <div className="x-frame" aria-hidden="true"><i /><i /><i /><i /></div>
+      <Crosshair enabled={t.crosshair !== false} />
+      <DocBand docRef={docRef} />
+      <SiteNav current={current} />
       <main>{children}</main>
       <SiteFooter t={t} />
       <TweaksPanel>
         <TweakSection label="Surface" />
         <TweakRadio label="Theme" value={t.theme} options={['void', 'archive']} onChange={(v) => setTweak('theme', v)} />
         <TweakSection label="Apparatus" />
-        <TweakToggle label="Sigil motion" value={t.motion} onChange={(v) => setTweak('motion', v)} />
+        <TweakToggle label="Motion" value={t.motion} onChange={(v) => setTweak('motion', v)} />
+        <TweakToggle label="Crosshair" value={t.crosshair !== false} onChange={(v) => setTweak('crosshair', v)} />
+        <TweakToggle label="Access counter" value={t.counter} onChange={(v) => setTweak('counter', v)} />
         {extraTweaks}
       </TweaksPanel>
-    </React.Fragment>
+    </RBMotion.Provider>
   );
 }
 
-/* Standard page intro */
+/* Standard page intro. `refCode` is rendered as the document header — in v2 it
+   was accepted and dropped. */
 function PageHead({ n, latin, refCode, title, lede }) {
   return (
     <div style={{ borderBottom: '1px solid var(--x-line)' }}>
-      <div className="x-wrap" style={{ padding: '4.5rem 3rem 3.5rem', position: 'relative', textAlign: 'center' }}>
-        <h1 style={{ fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', lineHeight: 1.06, letterSpacing: '0', margin: '0 auto 1.5rem', maxWidth: '18em' }}>{title}</h1>
-        {lede && <p style={{ fontSize: '1.15rem', lineHeight: 1.7, maxWidth: '46rem', margin: '0 auto' }}>{lede}</p>}
+      <div className="x-wrap" style={{ padding: '3.25rem 3rem 2.75rem', position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1.1rem' }}>
+          <span className="x-mono" style={{ color: 'var(--x-signal)' }}>{n}</span>
+          <span className="x-mono">{latin}</span>
+          <span style={{ flex: 1, borderTop: '1px solid var(--x-line-soft)' }} />
+          {refCode && <DecryptedText className="x-mono" text={refCode} />}
+        </div>
+        <h1 style={{ fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.03em', textTransform: 'uppercase', margin: '0 0 1.25rem', maxWidth: '18em' }}>{title}</h1>
+        {lede && <p style={{ fontSize: '1.02rem', lineHeight: 1.7, maxWidth: '52rem', margin: 0 }}>{lede}</p>}
       </div>
     </div>
   );
 }
 
 Object.assign(window, {
-  ES_NAV, useSiteTweaks, Blink, Sigil, VisitorCounter,
-  Sec, GlyphRule, Btn, SiteNav, SiteFooter, SiteFrame, PageHead,
+  ES_NAV, ES_REV, useSiteTweaks, Blink, Sigil, VisitorCounter,
+  Sec, GlyphRule, Btn, DocBand, SiteNav, SiteFooter, SiteFrame, PageHead,
 });

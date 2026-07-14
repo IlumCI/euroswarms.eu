@@ -13,54 +13,59 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/reactbits.jsx"></script>
 <script type="text/babel" src="shared/site-chrome.jsx"></script>
 <script type="text/babel">
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "void",
   "motion": true,
-  "counter": true
+  "counter": true,
+  "crosshair": true
 }/*EDITMODE-END*/;
 
 function ContactPage() {
   const [t, setTweak] = useSiteTweaks(TWEAK_DEFAULTS);
   return (
-    <SiteFrame current="contact.html" t={t} setTweak={setTweak}>
+    <SiteFrame current="contact.html" docRef="ES/RD/2026/060" t={t} setTweak={setTweak}>
       <PageHead n="VII" latin="Litterae" refCode="ES/RD/2026/060" title="Correspondence"
-        lede="For research inquiries, collaboration proposals, or technical discussion. We welcome correspondence from researchers, institutions, and organizations interested in collaboration or technical exchange." />
+        lede="For research inquiries, collaboration proposals, or technical discussion. The Institute welcomes correspondence from researchers, institutions, and organizations interested in collaboration or technical exchange." />
 
-      <div className="x-wrap" style={{ paddingTop: '3.5rem' }}>
-        <section data-screen-label="Channels" style={{ marginBottom: '5rem' }}>
+      <div className="x-wrap" style={{ paddingTop: '3rem' }}>
+        <section data-screen-label="Channels" style={{ marginBottom: '4.5rem' }}>
           <Sec n="VII·I" latin="Canales" title="Official Channels" />
-          <table className="x-table" style={{ maxWidth: '58rem' }}>
-            <caption>Correspondence register</caption>
-            <thead>
-              <tr><th>Subject</th><th>Channel</th><th>Expected response</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Research inquiries &amp; collaboration</td>
-                <td className="mono"><a href="mailto:research@euroswarms.eu">research@euroswarms.eu</a></td>
-                <td style={{ color: 'var(--x-muted)' }}>Within 10 working days</td>
-              </tr>
-              <tr>
-                <td>Volunteer appointments</td>
-                <td className="mono"><a href="mailto:research@euroswarms.eu">research@euroswarms.eu</a> <span style={{ color: 'var(--x-faint)' }}>(cite ref №)</span></td>
-                <td style={{ color: 'var(--x-muted)' }}>Every complete application</td>
-              </tr>
-              <tr>
-                <td>Defects in released artifacts</td>
-                <td className="mono"><a href="https://github.com/IlumCI/CR-CA/issues" target="_blank">github.com/IlumCI/CR-CA/issues</a></td>
-                <td style={{ color: 'var(--x-muted)' }}>Public tracker</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="x-scroll">
+            <table className="x-table" style={{ maxWidth: '58rem' }}>
+              <caption>Correspondence register</caption>
+              <thead>
+                <tr><th>Subject</th><th>Channel</th><th>Expected response</th></tr>
+              </thead>
+              <tbody>
+                <Reveal as="tr" delay={0}>
+                  <td>Research inquiries &amp; collaboration</td>
+                  <td className="mono"><a href="mailto:research@euroswarms.eu">research@euroswarms.eu</a></td>
+                  <td style={{ color: 'var(--x-muted)' }}>Within 10 working days</td>
+                </Reveal>
+                <Reveal as="tr" delay={45}>
+                  <td>Volunteer appointments</td>
+                  <td className="mono"><a href="mailto:research@euroswarms.eu">research@euroswarms.eu</a> <span style={{ color: 'var(--x-faint)' }}>(cite ref №)</span></td>
+                  <td style={{ color: 'var(--x-muted)' }}>Every complete application</td>
+                </Reveal>
+                <Reveal as="tr" delay={90}>
+                  <td>Defects in released artifacts</td>
+                  <td className="mono"><a href="https://github.com/Euroswarms-Institute/CR-CA/issues" target="_blank">github.com/Euroswarms-Institute/CR-CA/issues</a></td>
+                  <td style={{ color: 'var(--x-muted)' }}>Public tracker</td>
+                </Reveal>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section data-screen-label="Primary contact">
-          <div className="x-panel blue" style={{ padding: '3rem', maxWidth: '40rem' }}>
+        <section data-screen-label="Primary contact" style={{ marginBottom: '4.5rem' }}>
+          <Sec n="VII·II" latin="Praecipuum" title="Primary Channel" />
+          <div className="x-panel blue" style={{ padding: '2.75rem', maxWidth: '44rem' }}>
             <span className="x-mono"><span className="au">Primary channel</span></span>
-            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.9rem', margin: '0 0 1rem', color: '#fff' }}>
-              <a href="mailto:research@euroswarms.eu" style={{ color: 'var(--x-gold)', borderBottom: 'none' }}>research@euroswarms.eu</a>
+            <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.6rem', letterSpacing: '-0.02em', margin: '0 0 0.9rem' }}>
+              <a href="mailto:research@euroswarms.eu" style={{ color: '#fff', borderBottomColor: 'var(--x-signal)' }}>research@euroswarms.eu</a>
             </p>
             <p style={{ margin: 0 }}>
               Plain-text correspondence preferred. No form; no ticketing system; a person reads every letter.
