@@ -41,7 +41,7 @@ function PublicationsPage() {
               <tbody>
                 <Reveal as="tr" delay={0}>
                   <td className="mono">ES/P/2026/001</td>
-                  <td className="name">CR-CA: A Two-Tier Framework for Structured Causal Reasoning and Counterfactual Analysis</td>
+                  <td className="name"><a href="papers/ES-P-2026-001.pdf">CR-CA: A Two-Tier Framework for Structured Causal Reasoning and Counterfactual Analysis</a></td>
                   <td style={{ color: 'var(--x-muted)' }}>Arron Leilion</td>
                   <td style={{ color: 'var(--x-muted)' }}>White paper</td>
                   <td className="mono">2026-05-27</td>
@@ -66,7 +66,10 @@ function PublicationsPage() {
             <p style={{ marginBottom: '1.4rem' }}>
               The paper reports a code audit and a formal benchmark suite validating the implementation against Pearl's causal hierarchy. CR-CA outperforms naive OLS on collider (0.50× Oracle error) and fork (5.69× Oracle error) scenarios, evidence that descendant-only propagation yields correct intervention semantics where confounders are absent. It is recorded as insufficient where they are not: closing the gap on confounded scenarios requires proper identification algorithms — backdoor, frontdoor, instrumental variables.
             </p>
-            <a href="https://doi.org/10.5281/zenodo.20419201" target="_blank" className="x-status">doi.org/10.5281/zenodo.20419201 →</a>
+            <span style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '1.75rem' }}>
+              <a href="papers/ES-P-2026-001.pdf" className="x-status">Read the paper — PDF →</a>
+              <a href="https://doi.org/10.5281/zenodo.20419201" target="_blank" className="x-mono" style={{ color: 'var(--x-muted)' }}>doi.org/10.5281/zenodo.20419201 →</a>
+            </span>
           </div>
 
           <table className="x-record" style={{ maxWidth: '58rem' }}>
@@ -75,6 +78,7 @@ function PublicationsPage() {
               <tr><th>Author</th><td>Arron Leilion — Euroswarms Institute; Swarms Corporation</td></tr>
               <tr><th>Document type</th><td>White paper</td></tr>
               <tr><th>Version</th><td className="mono">2.0.0</td></tr>
+              <tr><th>Document</th><td className="mono"><a href="papers/ES-P-2026-001.pdf">ES-P-2026-001.pdf</a> <span style={{ color: 'var(--x-faint)' }}>— 9 pp · 258 kB</span></td></tr>
               <tr><th>Deposited</th><td className="mono">2026-05-27 · Zenodo</td></tr>
               <tr><th>Identifier</th><td className="mono"><a href="https://doi.org/10.5281/zenodo.20419201" target="_blank">10.5281/zenodo.20419201</a></td></tr>
               <tr><th>Licence</th><td>Creative Commons Attribution 4.0 International</td></tr>
