@@ -27,7 +27,7 @@ function PublicationsPage() {
   return (
     <SiteFrame current="publications.html" t={t} setTweak={setTweak}>
       <PageHead n="IV" latin="Acta" refCode="ES/RD/2026/040" title="Publications"
-        lede="Peer-reviewed publications, preprints, and technical reports from Euroswarms R&D Division. Each entry carries a permanent reference number in the Institute's document series." />
+        lede="White papers and technical reports from Euroswarms R&D Division. Each entry is deposited in a public registry under a permanent identifier and carries a reference number in the Institute's document series." />
 
       <div className="x-wrap" style={{ paddingTop: '3rem' }}>
         <section data-screen-label="Publication index" style={{ marginBottom: '4rem' }}>
@@ -36,20 +36,15 @@ function PublicationsPage() {
             <table className="x-table">
               <caption>Document index — series P</caption>
               <thead>
-                <tr><th>Ref</th><th>Title</th><th>Author</th><th>Year</th></tr>
+                <tr><th>Ref</th><th>Title</th><th>Author</th><th>Type</th><th>Date</th></tr>
               </thead>
               <tbody>
                 <Reveal as="tr" delay={0}>
                   <td className="mono">ES/P/2026/001</td>
-                  <td className="name">Causal Reasoning and Counterfactual Analysis: A Framework for Deterministic Agent Systems</td>
-                  <td style={{ color: 'var(--x-muted)' }}>Euroswarms R&amp;D Division</td>
-                  <td className="mono">2026</td>
-                </Reveal>
-                <Reveal as="tr" delay={45}>
-                  <td className="mono">ES/P/2026/002</td>
-                  <td className="name">Causal Reasoning Architectures for Deterministic Agent Systems</td>
+                  <td className="name">CR-CA: A Two-Tier Framework for Structured Causal Reasoning and Counterfactual Analysis</td>
                   <td style={{ color: 'var(--x-muted)' }}>Arron Leilion</td>
-                  <td className="mono">2026</td>
+                  <td style={{ color: 'var(--x-muted)' }}>White paper</td>
+                  <td className="mono">2026-05-27</td>
                 </Reveal>
               </tbody>
             </table>
@@ -58,29 +53,35 @@ function PublicationsPage() {
 
         <section data-screen-label="Publication detail" style={{ marginBottom: '4.5rem' }}>
           <Sec n="IV·I" latin="Acta plena" title="Entries" />
-          <div className="x-panel primary" style={{ padding: '2.25rem', maxWidth: '58rem', marginBottom: '1.25rem' }}>
+          <div className="x-panel primary" style={{ padding: '2.25rem', maxWidth: '58rem', marginBottom: '1.5rem' }}>
             <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
-              <span><span className="au">Official publication</span></span>
+              <span><span className="au">White paper</span> · Arron Leilion — 2026-05-27</span>
               <span style={{ color: 'var(--x-faint)' }}>ES/P/2026/001</span>
             </span>
-            <h3 style={{ fontSize: '1.4rem' }}>Causal Reasoning and Counterfactual Analysis: A Framework for Deterministic Agent Systems</h3>
-            <p style={{ marginBottom: '1.1rem' }}>
-              A comprehensive framework for causal reasoning and counterfactual analysis, combining structural causal models (SCMs) with large language model integration.
+            <h3 style={{ fontSize: '1.4rem' }}>CR-CA: A Two-Tier Framework for Structured Causal Reasoning and Counterfactual Analysis</h3>
+            {/* .x-panel p zeroes margins — space the two paragraphs explicitly. */}
+            <p style={{ marginBottom: '0.9rem' }}>
+              CR-CA (Causal Reasoning — Counterfactual Analysis) draws an explicit line through its own reasoning. The strict tier, <span className="mono">crca_core</span>, performs formal causal identification, estimation, and spec lifecycle management. The heuristic tier, <span className="mono">CRCAAgent</span>, performs LLM-integrated causal exploration, automatic variable extraction, and deterministic causal simulation with OLS-learned edge coefficients and polynomial mechanism discovery. The boundary between the two is auditable and configurable rather than implied.
             </p>
-            <a href="https://arxiv.org/" target="_blank" className="x-status">arXiv:2026.xxxxx →</a>
+            <p style={{ marginBottom: '1.4rem' }}>
+              The paper reports a code audit and a formal benchmark suite validating the implementation against Pearl's causal hierarchy. CR-CA outperforms naive OLS on collider (0.50× Oracle error) and fork (5.69× Oracle error) scenarios, evidence that descendant-only propagation yields correct intervention semantics where confounders are absent. It is recorded as insufficient where they are not: closing the gap on confounded scenarios requires proper identification algorithms — backdoor, frontdoor, instrumental variables.
+            </p>
+            <a href="https://doi.org/10.5281/zenodo.20419201" target="_blank" className="x-status">doi.org/10.5281/zenodo.20419201 →</a>
           </div>
 
-          <div className="x-panel" style={{ padding: '2.25rem', maxWidth: '58rem' }}>
-            <span className="x-mono" style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
-              <span>Arron Leilion — 2026</span>
-              <span style={{ color: 'var(--x-faint)' }}>ES/P/2026/002</span>
-            </span>
-            <h3 style={{ fontSize: '1.4rem' }}>Causal Reasoning Architectures for Deterministic Agent Systems</h3>
-            <p style={{ marginBottom: '1.1rem' }}>
-              A formal framework for structural causality modeling in agentic systems with applications to explainable AI and constraint-driven decision processes.
-            </p>
-            <a href="https://arxiv.org/" target="_blank" className="x-status">arXiv:2026.xxxxx →</a>
-          </div>
+          <table className="x-record" style={{ maxWidth: '58rem' }}>
+            <caption>Deposit record — ES/P/2026/001</caption>
+            <tbody>
+              <tr><th>Author</th><td>Arron Leilion — Euroswarms Institute; Swarms Corporation</td></tr>
+              <tr><th>Document type</th><td>White paper</td></tr>
+              <tr><th>Version</th><td className="mono">2.0.0</td></tr>
+              <tr><th>Deposited</th><td className="mono">2026-05-27 · Zenodo</td></tr>
+              <tr><th>Identifier</th><td className="mono"><a href="https://doi.org/10.5281/zenodo.20419201" target="_blank">10.5281/zenodo.20419201</a></td></tr>
+              <tr><th>Licence</th><td>Creative Commons Attribution 4.0 International</td></tr>
+              <tr><th>Source</th><td className="mono"><a href="https://github.com/Euroswarms-Institute/CR-CA" target="_blank">github.com/Euroswarms-Institute/CR-CA</a></td></tr>
+              <tr><th>Status</th><td><span className="x-status">Released</span></td></tr>
+            </tbody>
+          </table>
         </section>
       </div>
     </SiteFrame>
